@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cnp3vxbg2142q"]
+
+[ext_resource type="PackedScene" uid="uid://dbcroju10xnqn" path="res://Scenes/Player/player.tscn" id="1_0nbjp"]
+[ext_resource type="Texture2D" uid="uid://l8jg0i4m6sm5" path="res://Scenes/Player/latest.png" id="2_xf6vi"]
+[ext_resource type="PackedScene" uid="uid://5k445ksbvmpx" path="res://Scenes/Enemy/enemy.tscn" id="3_ouhkt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ouhkt"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ouhkt"]
+vertices = PackedVector2Array(351.602, 243.883, -292.922, 235.156, -210.719, -193.039, 428.102, -196.922)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-219, -203, -305, 245, 360, 254, 440, -207)])
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_0nbjp")]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ouhkt")]
+position = Vector2(0, 38)
+player = NodePath("../Player")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(48, 27)
+shape = SubResource("RectangleShape2D_ouhkt")
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(48, 27)
+rotation = 3.14159
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_xf6vi")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_ouhkt")
+enabled = false
