@@ -5,8 +5,6 @@ class_name Player extends CharacterBody2D
 @export var SPRINT_SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -400.0
 
-var aim_position : Vector2 = Vector2(1, 0)
-
 var alive: bool = true
 var running: bool = false
 
@@ -31,6 +29,4 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-	
-	aim_position = velocity.normalized()
 	move_and_slide()

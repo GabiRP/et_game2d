@@ -11,6 +11,7 @@ blend_point_0/node = SubResource("AnimationNodeAnimation_y8yyw")
 blend_point_0/pos = -0.1
 blend_point_1/node = SubResource("AnimationNodeAnimation_0a1tp")
 blend_point_1/pos = 0.1
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_85aqf"]
 animation = &"jump_left"
@@ -23,6 +24,7 @@ blend_point_0/node = SubResource("AnimationNodeAnimation_85aqf")
 blend_point_0/pos = -0.1
 blend_point_1/node = SubResource("AnimationNodeAnimation_51nyx")
 blend_point_1/pos = 0.1
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iw2ou"]
 animation = &"run_left"
@@ -70,4 +72,4 @@ states/Start/position = Vector2(499, 5)
 states/WalkDirection/node = SubResource("AnimationNodeBlendSpace1D_uu5xd")
 states/WalkDirection/position = Vector2(499, 184)
 transitions = ["Start", "IdleDirection", SubResource("AnimationNodeStateMachineTransition_85aqf"), "IdleDirection", "WalkDirection", SubResource("AnimationNodeStateMachineTransition_51nyx"), "WalkDirection", "IdleDirection", SubResource("AnimationNodeStateMachineTransition_nb3ak"), "Jump", "IdleDirection", SubResource("AnimationNodeStateMachineTransition_iw2ou"), "IdleDirection", "Jump", SubResource("AnimationNodeStateMachineTransition_dqirt"), "WalkDirection", "Jump", SubResource("AnimationNodeStateMachineTransition_uu5xd")]
-graph_offset = Vector2(-43, -14)
+graph_offset = Vector2(-103.312, -27)
