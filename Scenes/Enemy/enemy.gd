@@ -1,7 +1,8 @@
 extends CharacterBody2D
-
-@export var movement_speed: float = 300
-@export var player: Node
+#TODO: Hacerlo sin nav mesh, hacer raycast hacia la direccion del jugador y si lo pilla
+# mover al enemigo como si fuera un jugador (simulando teclas o algo no se)
+@export var movement_speed: float = 250
+@export var player: Player
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 func _ready() -> void:
@@ -22,6 +23,7 @@ func _physics_process(delta):
 
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * movement_speed
+	
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)
 	else:
