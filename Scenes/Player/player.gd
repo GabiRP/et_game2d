@@ -8,11 +8,7 @@ class_name Player extends CharacterBody2D
 var aim_position : Vector2 = Vector2(1, 0)
 
 var alive: bool = true
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		var half_viewport = get_viewport_rect().size / 2.0
-		aim_position = (event.position - half_viewport)
+var running: bool = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -27,11 +23,14 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
 	var speed: float = SPEED
+	running = false
 	if Input.is_action_pressed("sprint"):
+		running = true
 		speed = SPRINT_SPEED
 	if direction:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-
+	
+	aim_position = velocity.normalized()
 	move_and_slide()
