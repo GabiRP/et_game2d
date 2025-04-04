@@ -53,6 +53,7 @@ func _on_velocity_computed(safe_velocity: Vector2):
 func _on_player_detected(position: Vector2) -> void:
 	if global_position.distance_squared_to(position) > 5000:
 		set_movement_target(position)
+		return
 
 func raycast(origin: Vector2, to: Vector2) -> Dictionary:
 	var space_state = get_world_2d().direct_space_state
