@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 
 func set_movement_target(movement_target: Vector2):
 	navigation_agent.set_target_position(movement_target)
-
+#TODO: hacer que si detecta un borde se de la vuelta
 func set_new_velocity(new_velocity: Vector2, delta: float) -> void:
 	var temp_velocity = new_velocity
 	if not is_on_floor():
