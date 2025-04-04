@@ -36,5 +36,6 @@ enemy = NodePath("..")
 
 [node name="EnemyIdle" type="Node" parent="StateMachine"]
 script = ExtResource("5_d40jh")
+wander_radius = 15.0
 wander_time_window = 4.0
 metadata/_custom_type_script = "uid://co8y6ovg8sdxv"
