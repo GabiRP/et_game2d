@@ -1,12 +1,14 @@
-extends CharacterBody2D
+class_name Enemy extends CharacterBody2D
 #TODO: Hacerlo sin nav mesh, hacer raycast hacia la direccion del jugador y si lo pilla
 # mover al enemigo como si fuera un jugador (simulando teclas o algo no se)
 @export var movement_speed: float = 250
 @export var player: Player
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var player_raycast: Node = $PlayerRaycast
 
 func _ready() -> void:
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
+	player_raycast.player_detected.connect(_on_player_detected)
 
 func _process(delta: float) -> void:
 	set_movement_target(player.global_position)
@@ -32,3 +34,13 @@ func _physics_process(delta):
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
+
+func _on_player_detected(position: Vector2) -> void:
+	print("Player detected at %s" % position)
+	pass
+
+func raycast(origin: Vector2, to: Vector2) -> Dictionary:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(origin, to)
+	query.exclude = [self]
+	return space_state.intersect_ray(query)

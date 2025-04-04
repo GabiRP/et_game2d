@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=5 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Texture2D" uid="uid://l8jg0i4m6sm5" path="res://Scenes/Player/latest.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
+[ext_resource type="Script" uid="uid://bv7v38inme6cd" path="res://Scenes/Enemy/player_raycast.gd" id="3_2t2r4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 29)
@@ -19,3 +20,9 @@ shape = SubResource("RectangleShape2D_xf6vi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
+
+[node name="PlayerRaycast" type="Node" parent="."]
+script = ExtResource("3_2t2r4")
+
+[node name="Head" type="Node2D" parent="."]
+position = Vector2(0, -8)
