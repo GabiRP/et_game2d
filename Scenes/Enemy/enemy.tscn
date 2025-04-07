@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=9 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Texture2D" uid="uid://l8jg0i4m6sm5" path="res://Scenes/Player/latest.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://be2m0b88hq4sh" path="res://Scenes/Enemy/States/state_machine.gd" id="4_dmwl5"]
 [ext_resource type="Script" uid="uid://co8y6ovg8sdxv" path="res://Scenes/Enemy/States/EnemyIdle.gd" id="5_d40jh"]
 [ext_resource type="Script" uid="uid://cda32kltu7s85" path="res://Scenes/Enemy/gravity.gd" id="6_gx76c"]
+[ext_resource type="Script" uid="uid://blms38047wfp" path="res://Scenes/Enemy/States/EnemyFollow.gd" id="6_pqgp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -23,6 +24,8 @@ position = Vector2(-0.0600004, -14.21)
 shape = SubResource("RectangleShape2D_xf6vi")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 30.0
+target_desired_distance = 20.0
 debug_enabled = true
 
 [node name="PlayerRaycast" type="Node" parent="."]
@@ -31,14 +34,25 @@ script = ExtResource("3_2t2r4")
 [node name="Head" type="Node2D" parent="."]
 position = Vector2(-0.0600004, -21.92)
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("enemy")]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
 script = ExtResource("4_dmwl5")
+initial_state = NodePath("Idle")
 enemy = NodePath("..")
 
-[node name="EnemyIdle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("5_d40jh")
+wander_radius = 1000.0
 wander_time_window = 4.0
+navigation_agent = NodePath("../../NavigationAgent2D")
 metadata/_custom_type_script = "uid://co8y6ovg8sdxv"
 
-[node name="Node" type="Node" parent="."]
+[node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
+
+[node name="Follow" type="Node" parent="StateMachine"]
+script = ExtResource("6_pqgp3")
+metadata/_custom_type_script = "uid://blms38047wfp"
+
+[node name="FollowTimer" type="Timer" parent="StateMachine/Follow"]
+
+[node name="Gravity" type="Node" parent="."]
 script = ExtResource("6_gx76c")

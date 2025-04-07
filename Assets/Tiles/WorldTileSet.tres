@@ -1,18 +1,6 @@
-[gd_resource type="TileSet" load_steps=23 format=3 uid="uid://d0axpjp4nrws1"]
+[gd_resource type="TileSet" load_steps=21 format=3 uid="uid://d0axpjp4nrws1"]
 
 [ext_resource type="Texture2D" uid="uid://chymh028jgv6h" path="res://Assets/Tiles/tilesheet.png" id="1_bwv6o"]
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_bwv6o"]
-vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_cv4q3"]
-vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-agent_radius = 0.0
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rpvwx"]
 vertices = PackedVector2Array(16, -12.0859, -16, -12.1641, -15.9063, -18.5469, 16.0313, -18.5469)
@@ -137,7 +125,6 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_bwv6o")
 1:0/0 = 0
 1:0/0/terrain_set = 0
 1:0/0/terrain = 0
@@ -246,7 +233,7 @@ texture_region_size = Vector2i(32, 32)
 1:2/0/terrains_peering_bit/top_right_corner = 0
 0:2/0 = 0
 0:1/0 = 0
-0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_cv4q3")
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:1/0 = 0
 1:1/0/terrain_set = 0
 1:1/0/terrain = 0
