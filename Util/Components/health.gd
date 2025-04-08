@@ -14,16 +14,20 @@ signal health_changed(health: float)
 func _ready() -> void:
 	assert(parent is not Enemy or parent is not Player)
 	if hitbox:
+		print("higbox")
 		hitbox.damaged.connect(on_damaged)
 
 func on_damaged(attack: Attack) -> void:
 	if !parent.alive:
 		return
-	health -= attack.damage
+
+	health = clampf(health - attack.damage, 0, max_health)
+	print(attack.damage)
 	health_changed.emit(health)
-	
+	print(health)
 	if health <= 0:
 		health = 0
 		parent.alive = false
-		if animation_player:
-			animation_player.play("death")
+		parent.queue_free()
+		#if animation_player:
+			#animation_player.play("death")

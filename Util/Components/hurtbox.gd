@@ -15,5 +15,4 @@ func on_area_entered(area: Area2D) -> void:
 		if area.is_player and bullet.is_player_bullet:
 			return
 		area.damage(bullet.attack)
-		print("au")
 		hit_enemy.emit()

@@ -8,7 +8,7 @@
 
 [sub_resource type="Resource" id="Resource_anrnm"]
 script = ExtResource("2_q443p")
-damage = 5.0
+damage = 10.0
 armor = 0.0
 metadata/_custom_type_script = "uid://dbcycr6trfyr"
 

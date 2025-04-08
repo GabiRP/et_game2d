@@ -1,0 +1,14 @@
+[gd_resource type="AnimationNodeBlendSpace1D" load_steps=3 format=3 uid="uid://dbahhnigkerdt"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1w2j"]
+animation = &"idle_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4wq1"]
+animation = &"idle_right"
+
+[resource]
+blend_point_0/node = SubResource("AnimationNodeAnimation_r1w2j")
+blend_point_0/pos = -0.1
+blend_point_1/node = SubResource("AnimationNodeAnimation_u4wq1")
+blend_point_1/pos = 0.1
+blend_mode = 1
