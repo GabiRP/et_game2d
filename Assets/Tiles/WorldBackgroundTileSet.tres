@@ -1,6 +1,6 @@
-[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://d0axpjp4nrws1"]
+[gd_resource type="TileSet" load_steps=25 format=3 uid="uid://b68fik5rc7y86"]
 
-[ext_resource type="Texture2D" uid="uid://cyjdohu5s60pk" path="res://Assets/Tiles/tilesheet.png" id="1_bwv6o"]
+[ext_resource type="Texture2D" uid="uid://cyjdohu5s60pk" path="res://Assets/Tiles/tilesheet.png" id="1_3tidk"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_bwv6o"]
 vertices = PackedVector2Array(16, -5.41406, -16, -5.73438, -16, -16, 16, -16)
@@ -135,7 +135,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bwv6o"]
-texture = ExtResource("1_bwv6o")
+texture = ExtResource("1_3tidk")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -241,8 +241,8 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 occlusion_layer_0/light_mask = 1
-physics_layer_0/collision_layer = 7
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_layer = 0
+physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)

@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://vipwbrf2r28v"]
+
+[ext_resource type="Script" uid="uid://cw6tmp60ra0uh" path="res://Scenes/Bullet/bullet.gd" id="1_nt0l2"]
+[ext_resource type="Script" uid="uid://dbcycr6trfyr" path="res://Util/Classes/attack.gd" id="2_q443p"]
+[ext_resource type="Texture2D" uid="uid://dvt7emnj3o01g" path="res://Scenes/Bullet/bala.png" id="3_0gc84"]
+[ext_resource type="Script" uid="uid://b8vtmw3xkgaeb" path="res://Util/Components/hurtbox.gd" id="3_q443p"]
+[ext_resource type="Material" uid="uid://drflugfdmo7a7" path="res://Scenes/Bullet/bullet_particles.tres" id="5_q443p"]
+
+[sub_resource type="Resource" id="Resource_anrnm"]
+script = ExtResource("2_q443p")
+damage = 5.0
+armor = 0.0
+metadata/_custom_type_script = "uid://dbcycr6trfyr"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27jhl"]
+radius = 5.09902
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hveh7"]
+radius = 5.0
+
+[sub_resource type="Animation" id="Animation_0gc84"]
+resource_name = "bullet_forward"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_q443p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_anrnm"]
+_data = {
+&"RESET": SubResource("Animation_q443p"),
+&"bullet_forward": SubResource("Animation_0gc84")
+}
+
+[node name="Bullet" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 260
+script = ExtResource("1_nt0l2")
+attack = SubResource("Resource_anrnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_27jhl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.605, 0.605)
+texture = ExtResource("3_0gc84")
+hframes = 2
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+script = ExtResource("3_q443p")
+metadata/_custom_type_script = "uid://b8vtmw3xkgaeb"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hveh7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_anrnm")
+}
+speed_scale = 1.5
+
+[node name="BulletParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-6, 0)
+scale = Vector2(-66.6067, 1)
+process_material = ExtResource("5_q443p")

@@ -12,6 +12,9 @@ func enter() -> void:
 	)
 	pass
 
+func exit() -> void:
+	player_raycast.player_detected.disconnect(_on_player_detected)
+
 func _on_player_detected(position: Vector2) -> void:
 	if state_machine.enemy.global_position.distance_squared_to(position) > 5000:
 		state_machine.enemy.set_movement_target(position)

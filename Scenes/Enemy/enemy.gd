@@ -7,8 +7,9 @@ class_name Enemy extends CharacterBody2D
 @onready var player_raycast: Node = $PlayerRaycast
 @onready var player: Player = get_node("/root/World/Player")
 
+var alive: bool
+
 func _ready() -> void:
-	#player_raycast.player_detected.connect(_on_player_detected)
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	navigation_agent.navigation_finished.connect(
 		func():

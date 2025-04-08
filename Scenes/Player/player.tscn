@@ -1,12 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=20 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://crpl4t85nwmal" path="res://Scenes/Player/Sprites/spritesheet.png" id="2_a3d8c"]
 [ext_resource type="Script" uid="uid://i5ixx65m5jp7" path="res://Scenes/Player/playeranimation.gd" id="3_xpcdj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cmjvnraxxnvw6" path="res://Scenes/Player/Animations/player_tree.tres" id="4_mtuoh"]
+[ext_resource type="Script" uid="uid://cdw1n1dwp1fnu" path="res://Util/Components/health.gd" id="5_dd0ac"]
+[ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="6_0u5uq"]
+[ext_resource type="Script" uid="uid://dvmincs7ofrvl" path="res://Scenes/Player/player_attack.gd" id="7_0u5uq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
-size = Vector2(21, 29)
+size = Vector2(15.5, 29)
 
 [sub_resource type="Animation" id="Animation_jlvik"]
 length = 0.001
@@ -138,13 +141,16 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_htcer"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dd0ac"]
-graph_offset = Vector2(-262.106, 62.341)
+graph_offset = Vector2(-233, -7)
 nodes/AnimationNodeStateMachine/node = ExtResource("4_mtuoh")
 nodes/AnimationNodeStateMachine/position = Vector2(-40, 100)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_htcer")
 nodes/TimeScale/position = Vector2(300, 80)
 nodes/output/position = Vector2(460, 100)
 node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
+size = Vector2(16, 28)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_uvnfx")
@@ -178,3 +184,27 @@ parameters/AnimationNodeStateMachine/IdleDirection/blend_position = 0.0
 parameters/AnimationNodeStateMachine/Jump/blend_position = 0
 parameters/AnimationNodeStateMachine/WalkDirection/blend_position = 0.0
 parameters/TimeScale/scale = 1.0
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("hitbox", "animation_player")]
+script = ExtResource("5_dd0ac")
+hitbox = NodePath("../Hitbox")
+animation_player = NodePath("../AnimationPlayer")
+metadata/_custom_type_script = "uid://cdw1n1dwp1fnu"
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("6_0u5uq")
+is_player = true
+metadata/_custom_type_script = "uid://dvupaivofte2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_dd0ac")
+
+[node name="PlayerAttack" type="Node2D" parent="." node_paths=PackedStringArray("firing_pos")]
+script = ExtResource("7_0u5uq")
+firing_pos = NodePath("../Marker2D")
+metadata/_custom_type_script = "uid://dvmincs7ofrvl"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-6, -4)

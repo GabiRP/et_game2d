@@ -33,6 +33,8 @@ func enter() -> void:
 func Exit() -> void:
 	is_idle = false
 	idle_timer.stop()
+	player_raycast.player_detected.disconnect(_on_player_detected)
+	idle_timer.timeout.disconnect(_on_rmt_timeout)
 	pass
 
 #func update(delta: float) -> void:

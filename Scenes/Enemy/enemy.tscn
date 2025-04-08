@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=11 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Texture2D" uid="uid://l8jg0i4m6sm5" path="res://Scenes/Player/latest.png" id="1_mw074"]
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
@@ -7,9 +7,13 @@
 [ext_resource type="Script" uid="uid://co8y6ovg8sdxv" path="res://Scenes/Enemy/States/EnemyIdle.gd" id="5_d40jh"]
 [ext_resource type="Script" uid="uid://cda32kltu7s85" path="res://Scenes/Enemy/gravity.gd" id="6_gx76c"]
 [ext_resource type="Script" uid="uid://blms38047wfp" path="res://Scenes/Enemy/States/EnemyFollow.gd" id="6_pqgp3"]
+[ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="8_4ad2a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiqm3"]
+size = Vector2(20, 26)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_nvvbs")
@@ -56,3 +60,13 @@ metadata/_custom_type_script = "uid://blms38047wfp"
 
 [node name="Gravity" type="Node" parent="."]
 script = ExtResource("6_gx76c")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("8_4ad2a")
+metadata/_custom_type_script = "uid://dvupaivofte2e"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("RectangleShape2D_kiqm3")

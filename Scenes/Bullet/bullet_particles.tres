@@ -1,0 +1,14 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://drflugfdmo7a7"]
+
+[sub_resource type="Gradient" id="Gradient_jr0ln"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_gftm8"]
+gradient = SubResource("Gradient_jr0ln")
+
+[resource]
+particle_flag_disable_z = true
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_gftm8")

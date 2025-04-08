@@ -1,12 +1,15 @@
 class_name Player extends CharacterBody2D
 
-
 @export var SPEED: float = 300.0
 @export var SPRINT_SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -400.0
 
 var alive: bool = true
 var running: bool = false
+
+var last_facing_dir: Vector2 = Vector2(-1,0)
+
+var upgrades: Array[BaseBulletStrategy] = []
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -29,4 +32,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
+	if velocity.x:
+		last_facing_dir.x = sign(velocity.x)
 	move_and_slide()
