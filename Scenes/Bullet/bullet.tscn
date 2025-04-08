@@ -88,4 +88,5 @@ speed_scale = 1.5
 [node name="BulletParticles" type="GPUParticles2D" parent="."]
 position = Vector2(-6, 0)
 scale = Vector2(-66.6067, 1)
+speed_scale = 5.0
 process_material = ExtResource("5_q443p")
