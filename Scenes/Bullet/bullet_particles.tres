@@ -8,7 +8,13 @@ gradient = SubResource("Gradient_jr0ln")
 
 [resource]
 particle_flag_disable_z = true
-initial_velocity_max = 1.0
+emission_shape_offset = Vector3(0.01, 0, 0)
+emission_shape = 4
+emission_point_count = 8
+angle_min = 1.07288e-05
+angle_max = 17.7
+spread = 180.0
+initial_velocity_max = 0.3
 gravity = Vector3(0, 0, 0)
 color = Color(1, 0, 0, 1)
 color_ramp = SubResource("GradientTexture1D_gftm8")
