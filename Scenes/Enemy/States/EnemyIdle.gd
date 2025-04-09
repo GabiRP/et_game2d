@@ -6,7 +6,7 @@ class_name EnemyIdle extends State
 @export var navigation_agent: NavigationAgent2D
 
 @onready var idle_timer: Timer = $IdleTimer
-@onready var player_raycast: Node = $"../../PlayerRaycast"
+@onready var player_raycast: PlayerRaycast = $"../../PlayerRaycast"
 
 var player: Player
 var move_direction: Vector2
@@ -18,16 +18,12 @@ func enter() -> void:
 	is_idle = true
 	player = get_tree().get_first_node_in_group("Player")
 	idle_timer.start(randf_range(1.0, 7.0))
-	
-	navigation_agent.navigation_finished.connect(
-		func():
-			if !is_idle:
-				return
-			idle_timer.start(randf_range(3.0, 7.0))
-			print("nav finished")
-	)
-	idle_timer.timeout.connect(_on_rmt_timeout)
-	player_raycast.player_detected.connect(_on_player_detected)
+	if !navigation_agent.navigation_finished.is_connected(_on_navigation_ended):
+		navigation_agent.navigation_finished.connect(_on_navigation_ended)
+	if !idle_timer.timeout.is_connected(_on_rmt_timeout):
+		idle_timer.timeout.connect(_on_rmt_timeout)
+	if !player_raycast.player_detected.is_connected(_on_player_detected):
+		player_raycast.player_detected.connect(_on_player_detected)
 
 
 func Exit() -> void:
@@ -45,6 +41,8 @@ func physics_Update(delta: float) -> void:
 	pass 
 
 func _on_rmt_timeout() -> void:
+	if state_machine.current_state != self:
+		return
 	if !navigation_agent.is_navigation_finished():
 		return
 		
@@ -59,5 +57,13 @@ func _on_rmt_timeout() -> void:
 	state_machine.enemy.set_movement_target(navmesh_random_pos)
 
 func _on_player_detected(position: Vector2) -> void:
+	if state_machine.current_state != self:
+		return
 	Transitioned.emit(self, "follow")
 	pass
+
+func _on_navigation_ended() -> void:
+	if !is_idle:
+		return
+	idle_timer.start(randf_range(3.0, 7.0))
+	print("nav finished")

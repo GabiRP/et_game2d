@@ -19,11 +19,11 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6j3ko"]
 advance_mode = 2
-advance_expression = "velocity.x"
+advance_expression = "moving"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2chwy"]
 advance_mode = 2
-advance_expression = "!velocity.x"
+advance_expression = "!moving"
 
 [resource]
 states/Idle/node = ExtResource("1_1v6w4")

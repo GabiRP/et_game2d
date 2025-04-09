@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	if !idle:
 		last_facing_dir = enemy.velocity
 	
-	var time_scale = 1
+	var time_scale = .5
 	
 	animation_tree.set("parameters/TimeScale/scale", time_scale)
 	animation_tree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", sign(last_facing_dir.x))

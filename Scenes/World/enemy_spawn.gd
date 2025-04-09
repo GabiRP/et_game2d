@@ -5,7 +5,7 @@ class_name EnemySpawn
 @onready var enemy_scene: PackedScene = preload("res://Scenes/Enemy/enemy.tscn")
 
 func _ready() -> void:
-	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	#daspawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	pass
 
 func _process(delta: float) -> void:

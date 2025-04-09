@@ -153,6 +153,7 @@ node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0,
 size = Vector2(16, 28)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 1048577
 script = ExtResource("1_uvnfx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -7,7 +7,10 @@ class_name Enemy extends CharacterBody2D
 @onready var player_raycast: Node = $PlayerRaycast
 @onready var player: Player = get_node("/root/World/Player")
 
+var bullet: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 var alive: bool = true
+var moving: bool = false
+var last_facing_dir: Vector2 = Vector2(-1,0)
 
 func _ready() -> void:
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -40,19 +43,25 @@ func set_new_velocity(new_velocity: Vector2, delta: float) -> void:
 func _physics_process(delta):
 	# Do not query when the map has never synchronized and is empty.
 	if NavigationServer2D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
+		moving = false
 		return
 	if navigation_agent.is_navigation_finished():
+		moving = false
 		return
 	
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * movement_speed
 	new_velocity = Vector2(new_velocity.x, 0)
+	if new_velocity.x:
+		last_facing_dir.x = sign(velocity.x)
 	if !is_on_floor():
 		new_velocity.y += get_gravity().y * 5* delta
 	if navigation_agent.avoidance_enabled:
 		navigation_agent.set_velocity(new_velocity)
+		moving = true
 	else:
 		_on_velocity_computed(new_velocity)
+		moving = true
 
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity

@@ -4,6 +4,8 @@ class_name Player extends CharacterBody2D
 @export var SPRINT_SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -400.0
 
+@onready var hitbox: Hitbox = $Hitbox
+
 var alive: bool = true
 var running: bool = false
 

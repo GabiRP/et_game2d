@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=25 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
 [ext_resource type="Texture2D" uid="uid://dmtj33fy2qxrx" path="res://Scenes/Enemy/sprite.png" id="2_kiqm3"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://cdw1n1dwp1fnu" path="res://Util/Components/health.gd" id="9_kiqm3"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cs76moh7ofl4i" path="res://Scenes/Enemy/Animations/enemy_statemachine.tres" id="10_6j3ko"]
 [ext_resource type="Script" uid="uid://b38lmbn7ltwey" path="res://Scenes/Enemy/animation.gd" id="11_2chwy"]
+[ext_resource type="Script" uid="uid://cjjn6j8ptpoba" path="res://Scenes/Enemy/player_attack_area.gd" id="12_beese"]
+[ext_resource type="PackedScene" uid="uid://dgiikai18fwx2" path="res://Scenes/Enemy/hit_particles.tscn" id="13_1vi6b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -20,6 +22,40 @@ size = Vector2(20, 26)
 
 [sub_resource type="Animation" id="Animation_kiqm3"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_beese"]
+resource_name = "idle_left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_1vi6b"]
+resource_name = "idle_right"
+length = 0.1
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -67,40 +103,6 @@ tracks/0/keys = {
 "values": [2, 5]
 }
 
-[sub_resource type="Animation" id="Animation_beese"]
-resource_name = "idle_left"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_1vi6b"]
-resource_name = "idle_right"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beese"]
 _data = {
 &"RESET": SubResource("Animation_kiqm3"),
@@ -113,7 +115,6 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6j3ko"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2chwy"]
-graph_offset = Vector2(-187.455, 4.72728)
 nodes/AnimationNodeStateMachine/node = ExtResource("10_6j3ko")
 nodes/AnimationNodeStateMachine/position = Vector2(140, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6j3ko")
@@ -121,11 +122,15 @@ nodes/TimeScale/position = Vector2(420, 60)
 nodes/output/position = Vector2(580, 80)
 node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beese"]
+size = Vector2(48.125, 46.875)
+
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(1.6, 1.6)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_nvvbs")
+movement_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -11.25)
@@ -203,3 +208,22 @@ parameters/TimeScale/scale = 1.0
 script = ExtResource("11_2chwy")
 animation_tree = NodePath("../AnimationTree")
 sprite = NodePath("../Sprite2D")
+
+[node name="PlayerArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1048576
+script = ExtResource("12_beese")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+position = Vector2(-0.312505, -15.3125)
+scale = Vector2(0.999999, 0.999999)
+shape = SubResource("RectangleShape2D_beese")
+
+[node name="AttackTimer" type="Timer" parent="PlayerArea"]
+one_shot = true
+
+[node name="BulletDir" type="Marker2D" parent="PlayerArea"]
+position = Vector2(-9.375, -10)
+scale = Vector2(1, 1)
+
+[node name="HitParticles" parent="PlayerArea" instance=ExtResource("13_1vi6b")]
