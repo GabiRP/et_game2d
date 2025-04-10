@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6iffklx5lsst"]
+
+[ext_resource type="Script" uid="uid://cvdqw6bdflstx" path="res://Util/Strategy/Player/player_upgrade.gd" id="1_2ygg5"]
+[ext_resource type="Script" uid="uid://dfnf3ccitrhki" path="res://Util/Strategy/Player/faster_shooting.gd" id="2_aer83"]
+[ext_resource type="Texture2D" uid="uid://l8jg0i4m6sm5" path="res://Scenes/Player/latest.png" id="3_w3vaw"]
+
+[sub_resource type="Resource" id="Resource_ng1ea"]
+script = ExtResource("2_aer83")
+texture = ExtResource("3_w3vaw")
+upgrade_text = "Base"
+metadata/_custom_type_script = "uid://dfnf3ccitrhki"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuxid"]
+
+[node name="FasterShootingUpgrade" type="Area2D" node_paths=PackedStringArray("sprite")]
+collision_layer = 0
+script = ExtResource("1_2ygg5")
+sprite = NodePath("Sprite2D")
+bullet_strategy = SubResource("Resource_ng1ea")
+metadata/_custom_type_script = "uid://cvdqw6bdflstx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kuxid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.298039, 1, 1, 1)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_w3vaw")

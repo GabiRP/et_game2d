@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @export var JUMP_VELOCITY: float = -400.0
 
 @onready var hitbox: Hitbox = $Hitbox
-
+@onready var attack: PlayerAttack = $PlayerAttack
 var alive: bool = true
 var running: bool = false
 

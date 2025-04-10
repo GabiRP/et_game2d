@@ -1,15 +1,28 @@
 class_name PlayerAttack extends Node2D
 
 @export var firing_pos: Marker2D
+@export var start_attack_cooldown: float = .5
+@export var max_bullet_count: int = 30
+
+var bullet_count: int = 30
 
 @onready var player: Player = get_owner()
+@onready var attack_timer: Timer = $AttackTimer
 var bullet_scene: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("attack"):
-		var fir_pos: float = -6.0
+	if Input.is_action_pressed("attack"):
+		if attack_timer.time_left > 0:
+			return
+		#if bullet_count <= 0:
+			#attack_timer.start(2)
+			#bullet_count = max_bullet_count
+			#return
+		#bullet_count -= 1
+		attack_timer.start(start_attack_cooldown)
+		var fir_pos: float = -8.0
 		if sign(player.last_facing_dir.x) >= 1:
-			fir_pos = 6
+			fir_pos = 8
 		firing_pos.position.x = fir_pos
 		
 		var spawned_bullet: Bullet = bullet_scene.instantiate()

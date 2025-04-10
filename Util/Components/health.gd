@@ -20,7 +20,6 @@ func _ready() -> void:
 func on_damaged(attack: Attack) -> void:
 	if !parent.alive:
 		return
-
 	health = clampf(health - attack.damage, 0, max_health)
 	print(attack.damage)
 	health_changed.emit(health)

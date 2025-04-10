@@ -24,15 +24,14 @@ func _physics_process(delta: float) -> void:
 		animation_tree.active = false
 		return
 	
-	var idle = !player.velocity.x
-	if !idle:
-		last_facing_dir = player.velocity
+	last_facing_dir = player.last_facing_dir
 	
 	var time_scale = 1
 	if player.running:
 		time_scale *= 2
 	
+	if last_facing_dir.x <= -1:
+		sprite.flip_h = true
+	else: sprite.flip_h = false
+	
 	animation_tree.set("parameters/TimeScale/scale", time_scale)
-	animation_tree.set("parameters/AnimationNodeStateMachine/IdleDirection/blend_position", sign(last_facing_dir.x))
-	animation_tree.set("parameters/AnimationNodeStateMachine/WalkDirection/blend_position", sign(last_facing_dir.x))
-	animation_tree.set("parameters/AnimationNodeStateMachine/Jump/blend_position", sign(last_facing_dir.x))

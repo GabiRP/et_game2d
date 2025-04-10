@@ -4,6 +4,7 @@ class_name Bullet extends CharacterBody2D
 @export var max_pierce: int = 1
 
 @export var attack: Attack
+@export var hit_particles: PackedScene = preload("res://Scenes/Enemy/hit_particles.tscn")
 
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
@@ -30,6 +31,9 @@ func _physics_process(delta: float) -> void:
 
 func on_enemy_hit() -> void:
 	current_pierce_count += 1
-	
+	var spawned_particles: GPUParticles2D = hit_particles.instantiate()
+	get_tree().root.add_child(spawned_particles)
+	spawned_particles.global_position = global_position
+	spawned_particles.emitting = true
 	if current_pierce_count >= max_pierce:
 		queue_free()
