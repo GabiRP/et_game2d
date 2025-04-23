@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=21 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
+[ext_resource type="Script" uid="uid://dq3nre1ej4jje" path="res://Scenes/Player/player_health_label.gd" id="2_jlvik"]
 [ext_resource type="Script" uid="uid://i5ixx65m5jp7" path="res://Scenes/Player/playeranimation.gd" id="3_xpcdj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cmjvnraxxnvw6" path="res://Scenes/Player/Animations/player_tree.tres" id="4_mtuoh"]
 [ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="6_0u5uq"]
@@ -106,6 +107,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_htcer"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dd0ac"]
+graph_offset = Vector2(-131.636, -3.54546)
 nodes/AnimationNodeStateMachine/node = ExtResource("4_mtuoh")
 nodes/AnimationNodeStateMachine/position = Vector2(-40, 100)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_htcer")
@@ -115,6 +117,10 @@ node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0,
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
 size = Vector2(16, 28)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0u5uq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jlvik"]
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1048577
@@ -187,3 +193,51 @@ collision_shape = NodePath("../Hitbox/CollisionShape2D")
 hitbox = NodePath("../Hitbox")
 animation_player = NodePath("../AnimationPlayer")
 max_health = 100.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -574.0
+offset_top = -338.0
+offset_right = 577.0
+offset_bottom = 310.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -101.0
+offset_top = -23.0
+offset_right = -43.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Health:"
+label_settings = SubResource("LabelSettings_0u5uq")
+
+[node name="healthlabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "100"
+label_settings = SubResource("LabelSettings_jlvik")
+script = ExtResource("2_jlvik")
+full_health_color = Color(1.08775e-05, 0.917792, 1.15514e-06, 1)
+mid_health_color = Color(1, 0.756863, 0, 1)
+low_health_color = Color(1, 0, 0, 1)
+full_health = 80.0
+mid_health = 50.0
+low_health = 30.0
+
+[connection signal="health_changed" from="Health" to="CanvasLayer/Control/healthlabel" method="_on_health_changed"]

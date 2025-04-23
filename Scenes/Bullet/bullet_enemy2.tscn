@@ -1,13 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bb0ebc31u6qwm"]
+[gd_scene load_steps=12 format=3 uid="uid://vipwbrf2r28v"]
 
-[ext_resource type="Script" uid="uid://cw6tmp60ra0uh" path="res://Scenes/Bullet/bullet.gd" id="1_nt0l2"]
-[ext_resource type="Script" uid="uid://dbcycr6trfyr" path="res://Util/Classes/attack.gd" id="2_q443p"]
-[ext_resource type="Texture2D" uid="uid://dvt7emnj3o01g" path="res://Scenes/Bullet/bala.png" id="3_0gc84"]
-[ext_resource type="Script" uid="uid://b8vtmw3xkgaeb" path="res://Util/Components/hurtbox.gd" id="3_q443p"]
-[ext_resource type="Material" uid="uid://drflugfdmo7a7" path="res://Scenes/Bullet/bullet_particles.tres" id="5_q443p"]
+[ext_resource type="Script" uid="uid://cw6tmp60ra0uh" path="res://Scenes/Bullet/bullet.gd" id="1_oek8j"]
+[ext_resource type="Script" uid="uid://dbcycr6trfyr" path="res://Util/Classes/attack.gd" id="2_e40co"]
+[ext_resource type="Texture2D" uid="uid://cf06kaug0hykk" path="res://Scenes/Bullet/llave_inglesa-Sheet.png" id="3_i2o83"]
+[ext_resource type="Script" uid="uid://b8vtmw3xkgaeb" path="res://Util/Components/hurtbox.gd" id="4_u3sl6"]
+[ext_resource type="Material" uid="uid://drflugfdmo7a7" path="res://Scenes/Bullet/bullet_particles.tres" id="5_f3kft"]
 
 [sub_resource type="Resource" id="Resource_anrnm"]
-script = ExtResource("2_q443p")
+script = ExtResource("2_e40co")
 damage = 10.0
 armor = 0.0
 metadata/_custom_type_script = "uid://dbcycr6trfyr"
@@ -35,7 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_0gc84"]
 resource_name = "bullet_forward"
-length = 0.2
+length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -44,10 +44,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_anrnm"]
@@ -59,8 +59,8 @@ _data = {
 [node name="Bullet" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 260
-script = ExtResource("1_nt0l2")
-speed = 200.0
+script = ExtResource("1_oek8j")
+speed = 250.0
 attack = SubResource("Resource_anrnm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -68,13 +68,13 @@ shape = SubResource("CircleShape2D_27jhl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.605, 0.605)
-texture = ExtResource("3_0gc84")
-hframes = 2
+texture = ExtResource("3_i2o83")
+hframes = 12
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 512
-script = ExtResource("3_q443p")
+collision_mask = 256
+script = ExtResource("4_u3sl6")
 metadata/_custom_type_script = "uid://b8vtmw3xkgaeb"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -87,9 +87,8 @@ libraries = {
 speed_scale = 1.5
 
 [node name="BulletParticles" type="GPUParticles2D" parent="."]
-position = Vector2(-5, 0)
 rotation = 1.5708
 scale = Vector2(66.6067, -1)
 speed_scale = 5.0
 collision_base_size = 0.0
-process_material = ExtResource("5_q443p")
+process_material = ExtResource("5_f3kft")

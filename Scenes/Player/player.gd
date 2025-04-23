@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 var alive: bool = true
 var running: bool = false
 var invincible: bool = false
+var shooting: bool = false
 
 var last_facing_dir: Vector2 = Vector2(-1,0)
 
@@ -39,6 +40,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * speed
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
-	if velocity.x:
+	if velocity.x and !shooting:
 		last_facing_dir.x = sign(velocity.x)
 	move_and_slide()

@@ -18,7 +18,7 @@ func _ready() -> void:
 	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
 	navigation_agent.navigation_finished.connect(
 		func():
-			print("nav ended")
+			pass		#print("nav ended")
 	)
 
 func _process(delta: float) -> void:

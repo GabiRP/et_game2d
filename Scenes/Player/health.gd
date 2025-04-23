@@ -11,7 +11,6 @@ var inv_timer : Timer
 
 func _ready():
 	super()
-	
 	inv_timer = Timer.new()
 	inv_timer.wait_time = invincibility_time
 	inv_timer.timeout.connect(on_inv_timer_timeout)

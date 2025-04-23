@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://cv2ruu1nd3v01" path="res://Scenes/Enemy/health_label.gd" id="14_r1w2j"]
 [ext_resource type="Script" uid="uid://cndrb11mvhk5r" path="res://Scenes/Enemy/health.gd" id="14_u4wq1"]
 [ext_resource type="Script" uid="uid://dk08pmfvcstly" path="res://Scenes/Enemy/item_dropper.gd" id="15_u4wq1"]
-[ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/faster_shooting_upgrade.tscn" id="16_5luce"]
+[ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="16_5luce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -173,8 +173,6 @@ debug_enabled = true
 
 [node name="PlayerRaycast" type="Node" parent="."]
 script = ExtResource("3_2t2r4")
-detection_distance = null
-detection_fov = null
 
 [node name="Head" type="Node2D" parent="."]
 position = Vector2(-0.0600004, -21.92)
@@ -221,8 +219,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_2chwy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/AnimationNodeStateMachine/Idle/blend_position = 0
-parameters/AnimationNodeStateMachine/Walk/blend_position = 0
+parameters/AnimationNodeStateMachine/Idle/blend_position = -0.0753769
+parameters/AnimationNodeStateMachine/Walk/blend_position = -0.137353
 parameters/TimeScale/scale = 1.0
 
 [node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite", "animation_player", "enemy_hitbox")]
@@ -275,7 +273,7 @@ low_health = 20.0
 script = ExtResource("14_u4wq1")
 hitbox = NodePath("../Hitbox")
 animation_player = NodePath("../AnimationPlayer")
-max_health = 100.0
+max_health = 80.0
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_u4wq1")

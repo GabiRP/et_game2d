@@ -26,6 +26,8 @@ func _physics_process(delta: float) -> void:
 	if raycast:
 		var collider = raycast["collider"]
 		if collider is Player:
+			if !enemy_head or !collider:
+				return
 			var dir_to_player = enemy_head.global_position.direction_to(collider.global_position)
 			if acos(forward_vector.dot(dir_to_player)) > deg_to_rad(detection_fov):
 				is_detecting_player = false

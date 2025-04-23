@@ -12,6 +12,7 @@ var bullet_scene: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("attack"):
+		player.shooting = true
 		if attack_timer.time_left > 0:
 			return
 		#if bullet_count <= 0:
@@ -34,3 +35,5 @@ func _physics_process(delta: float) -> void:
 		
 		for strategy in player.upgrades:
 			strategy.apply_upgrade(spawned_bullet)
+		return
+	player.shooting = false

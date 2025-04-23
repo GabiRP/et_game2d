@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	
 	var time_scale = 1
 	if player.running:
-		time_scale *= 2
+		time_scale *= 1.5
 	
 	if last_facing_dir.x <= -1:
 		sprite.flip_h = true

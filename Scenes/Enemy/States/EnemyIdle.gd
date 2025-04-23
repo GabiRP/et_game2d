@@ -66,4 +66,4 @@ func _on_navigation_ended() -> void:
 	if !is_idle:
 		return
 	idle_timer.start(randf_range(3.0, 7.0))
-	print("nav finished")
+	#print("nav finished")
