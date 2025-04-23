@@ -14,11 +14,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_spawn_timer_timeout() -> void:
-	var random_int: int = randi_range(0, len(spawn_pool) -1)
-	var enemy_scene = spawn_pool[random_int]
 	var enemy_count = randi_range(1, max_spawn_count) - 1
 	
 	for i in range(0, enemy_count):
+		var random_int: int = randi_range(0, len(spawn_pool) -1)
+		var enemy_scene = spawn_pool[random_int]
 		var spawn_position: Vector2 = get_random_map_position()
 		var spawned_enemy: Enemy = enemy_scene.instantiate()
 		get_tree().root.add_child(spawned_enemy)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cnp3vxbg2142q"]
+[gd_scene load_steps=8 format=4 uid="uid://cnp3vxbg2142q"]
 
 [ext_resource type="PackedScene" uid="uid://dbcroju10xnqn" path="res://Scenes/Player/player.tscn" id="1_0nbjp"]
 [ext_resource type="TileSet" uid="uid://b68fik5rc7y86" path="res://Assets/Tiles/WorldBackgroundTileSet.tres" id="1_27jhl"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://d0axpjp4nrws1" path="res://Assets/Tiles/WorldTileSet.tres" id="1_ouhkt"]
 [ext_resource type="Script" uid="uid://cjpk8rbg5n81t" path="res://Scenes/World/enemy_spawn.gd" id="7_87yka"]
 [ext_resource type="PackedScene" uid="uid://5k445ksbvmpx" path="res://Scenes/Enemy/enemy.tscn" id="7_kjd5s"]
+[ext_resource type="PackedScene" uid="uid://cjxwv541fpgro" path="res://Scenes/Enemy/OtroTornilio/enemy2.tscn" id="7_kuxid"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hveh7")
@@ -29,7 +30,7 @@ tile_set = ExtResource("1_ouhkt")
 
 [node name="EnemySpawn" type="Node" parent="."]
 script = ExtResource("7_87yka")
-spawn_pool = Array[PackedScene]([ExtResource("7_kjd5s")])
+spawn_pool = Array[PackedScene]([ExtResource("7_kjd5s"), ExtResource("7_kuxid")])
 
 [node name="Timer" type="Timer" parent="EnemySpawn"]
 one_shot = true
