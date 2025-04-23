@@ -20,9 +20,9 @@ func _physics_process(delta: float) -> void:
 			#return
 		#bullet_count -= 1
 		attack_timer.start(start_attack_cooldown)
-		var fir_pos: float = -8.0
+		var fir_pos: float = -9.0
 		if sign(player.last_facing_dir.x) >= 1:
-			fir_pos = 8
+			fir_pos = 9
 		firing_pos.position.x = fir_pos
 		
 		var spawned_bullet: Bullet = bullet_scene.instantiate()

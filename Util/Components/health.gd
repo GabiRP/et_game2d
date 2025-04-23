@@ -1,32 +1,40 @@
 class_name Health 
 extends Node
 
+##############################
+# Health Component for enemies
+##############################
+
 signal health_changed(health: float)
+signal max_health_changed(max_health: float)
+signal died()
 
-@export var hitbox: Hitbox
-@export var animation_player: AnimationPlayer
+@export var hitbox : Hitbox
+@export var animation_player : AnimationPlayer
 
-@export var max_health: float = 100.0
-@onready var health: float = max_health
+@export var max_health := 10.0 :
+	set(val):
+		max_health = val
+		max_health_changed.emit(max_health)
+		health = max_health
+@onready var health := max_health:
+	set(val):
+		health = val
+		health_changed.emit(health)
 
-@onready var parent: Node2D = get_owner()
 
-func _ready() -> void:
-	assert(parent is not Enemy or parent is not Player)
+func _ready():
 	if hitbox:
-		print("higbox")
 		hitbox.damaged.connect(on_damaged)
-
-func on_damaged(attack: Attack) -> void:
-	if !parent.alive:
-		return
-	health = clampf(health - attack.damage, 0, max_health)
-	print(attack.damage)
+	
+	max_health_changed.emit(max_health)
 	health_changed.emit(health)
-	print(health)
+
+
+func on_damaged(attack: Attack):
+	health -= attack.damage
+	health = max(0, health)
+	
 	if health <= 0:
-		health = 0
-		parent.alive = false
-		parent.queue_free()
-		#if animation_player:
-			#animation_player.play("death")
+		if animation_player:
+			animation_player.play("death")

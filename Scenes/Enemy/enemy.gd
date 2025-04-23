@@ -6,6 +6,8 @@ class_name Enemy extends CharacterBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var player_raycast: Node = $PlayerRaycast
 @onready var player: Player = get_node("/root/World/Player")
+@onready var hitbox: Hitbox = $Hitbox
+@onready var health: Health = $Health
 
 var bullet: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 var alive: bool = true
@@ -20,6 +22,8 @@ func _ready() -> void:
 	)
 
 func _process(delta: float) -> void:
+	if !alive:
+		queue_free()
 	if velocity.normalized().x == 1:
 		$Sprite2D.flip_h = true
 		$Head.rotation = deg_to_rad(90)

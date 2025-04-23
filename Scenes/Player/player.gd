@@ -8,10 +8,15 @@ class_name Player extends CharacterBody2D
 @onready var attack: PlayerAttack = $PlayerAttack
 var alive: bool = true
 var running: bool = false
+var invincible: bool = false
 
 var last_facing_dir: Vector2 = Vector2(-1,0)
 
 var upgrades: Array[BaseBulletStrategy] = []
+
+func _process(delta: float) -> void:
+	if !alive:
+		queue_free.call()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

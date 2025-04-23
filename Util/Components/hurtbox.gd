@@ -13,6 +13,7 @@ func on_area_entered(area: Area2D) -> void:
 	print("area")
 	if area is Hitbox:
 		if area.is_player and bullet.is_player_bullet:
+			print("aaa")
 			return
 		area.damage(bullet.attack)
 		hit_enemy.emit()

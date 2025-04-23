@@ -2,7 +2,7 @@ class_name PlayerRaycast extends Node
 
 signal player_detected(position: Vector2)
 
-@onready var enemy: Enemy = get_parent()
+@onready var enemy: Enemy = get_owner()
 @onready var enemy_head: Node2D = enemy.get_node("Head")
 @export var detection_distance: float = 500.0
 @export var detection_fov = 110
@@ -13,6 +13,8 @@ func _ready() -> void:
 	pass 
 
 func _physics_process(delta: float) -> void:
+	if !enemy.player.alive:
+		return
 	var raycast = enemy.raycast(enemy_head.global_position, enemy.player.global_position)
 	var forward_vector: Vector2
 	var sprite: Sprite2D = enemy.get_node("Sprite2D")

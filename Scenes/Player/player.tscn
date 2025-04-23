@@ -1,32 +1,15 @@
 [gd_scene load_steps=18 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
-[ext_resource type="Texture2D" uid="uid://btsmphvka0bmg" path="res://Scenes/Player/Sprite-player.png" id="2_0u5uq"]
+[ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
 [ext_resource type="Script" uid="uid://i5ixx65m5jp7" path="res://Scenes/Player/playeranimation.gd" id="3_xpcdj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cmjvnraxxnvw6" path="res://Scenes/Player/Animations/player_tree.tres" id="4_mtuoh"]
-[ext_resource type="Script" uid="uid://cdw1n1dwp1fnu" path="res://Util/Components/health.gd" id="5_dd0ac"]
 [ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dvmincs7ofrvl" path="res://Scenes/Player/player_attack.gd" id="7_0u5uq"]
+[ext_resource type="Script" uid="uid://ct0h32h4daesy" path="res://Scenes/Player/health.gd" id="7_jlvik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(15.5, 28.5)
-
-[sub_resource type="Animation" id="Animation_0u5uq"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_jlvik"]
 length = 0.001
@@ -41,40 +24,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_gk6dx"]
-resource_name = "run"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_jhyir"]
-resource_name = "jump"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2)]
 }
 
 [sub_resource type="Animation" id="Animation_74mp2"]
@@ -94,6 +43,57 @@ tracks/0/keys = {
 "values": [Vector2i(0, 3), Vector2i(1, 3)]
 }
 
+[sub_resource type="Animation" id="Animation_0u5uq"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jhyir"]
+resource_name = "jump"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 2), Vector2i(1, 2)]
+}
+
+[sub_resource type="Animation" id="Animation_gk6dx"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gk6dx"]
 _data = {
 &"RESET": SubResource("Animation_jlvik"),
@@ -106,7 +106,6 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_htcer"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dd0ac"]
-graph_offset = Vector2(-132.207, 41.6033)
 nodes/AnimationNodeStateMachine/node = ExtResource("4_mtuoh")
 nodes/AnimationNodeStateMachine/position = Vector2(-40, 100)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_htcer")
@@ -138,12 +137,17 @@ position = Vector2(0, -13)
 scale = Vector2(0.41, 0.41)
 texture = ExtResource("2_0u5uq")
 hframes = 4
-vframes = 4
+vframes = 5
 
-[node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite")]
+[node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite", "player_hitbox")]
 script = ExtResource("3_xpcdj")
 animation_tree = NodePath("../AnimationTree")
 sprite = NodePath("../Sprite2D")
+player_hitbox = NodePath("../Hitbox")
+
+[node name="Timer" type="Timer" parent="Animation"]
+wait_time = 0.1
+one_shot = true
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeBlendTree_dd0ac")
@@ -153,12 +157,6 @@ parameters/AnimationNodeStateMachine/IdleDirection/blend_position = -0.000807106
 parameters/AnimationNodeStateMachine/Jump/blend_position = 0
 parameters/AnimationNodeStateMachine/WalkDirection/blend_position = 0.0
 parameters/TimeScale/scale = 1.0
-
-[node name="Health" type="Node" parent="." node_paths=PackedStringArray("hitbox", "animation_player")]
-script = ExtResource("5_dd0ac")
-hitbox = NodePath("../Hitbox")
-animation_player = NodePath("../AnimationPlayer")
-metadata/_custom_type_script = "uid://cdw1n1dwp1fnu"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(0, -14)
@@ -181,4 +179,11 @@ metadata/_custom_type_script = "uid://dvmincs7ofrvl"
 one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-8, -13)
+position = Vector2(-8, -9)
+
+[node name="Health" type="Node" parent="." node_paths=PackedStringArray("collision_shape", "hitbox", "animation_player")]
+script = ExtResource("7_jlvik")
+collision_shape = NodePath("../Hitbox/CollisionShape2D")
+hitbox = NodePath("../Hitbox")
+animation_player = NodePath("../AnimationPlayer")
+max_health = 100.0

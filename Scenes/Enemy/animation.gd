@@ -8,15 +8,18 @@ extends Node
 
 @export var animation_tree : AnimationTree
 @export var sprite : Sprite2D
+@export var animation_player: AnimationPlayer
+@export var enemy_hitbox: Hitbox
 
 @onready var enemy : Enemy = get_owner()
-
+@onready var damage_timer: Timer = $Timer
 var last_facing_dir: Vector2 = Vector2(0,1)
 
 func _ready():
 	# The animation tree is inactive while outside of gameplay.
 	# This makes it easier to edit animations in the editor.
 	animation_tree.active = true
+	enemy_hitbox.damaged.connect(_on_damaged)
 
 
 func _physics_process(delta: float) -> void:
@@ -33,3 +36,13 @@ func _physics_process(delta: float) -> void:
 	animation_tree.set("parameters/TimeScale/scale", time_scale)
 	animation_tree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", sign(last_facing_dir.x))
 	animation_tree.set("parameters/AnimationNodeStateMachine/Walk/blend_position", sign(last_facing_dir.x))
+
+func _on_damaged(_attack: Attack) -> void:
+	damage_timer.start(.1)
+	sprite.modulate.a = .5
+	await damage_timer.timeout
+	sprite.modulate.a = 1
+	#await damage_timer.timeout
+	#sprite.modulate.a = .7
+	#await damage_timer.timeout
+	#sprite.modulate.a = 1

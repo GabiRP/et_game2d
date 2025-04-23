@@ -2,20 +2,26 @@ extends Node
 class_name EnemySpawn
 
 @onready var spawn_timer: Timer = $Timer
-@onready var enemy_scene: PackedScene = preload("res://Scenes/Enemy/enemy.tscn")
+
+@export var spawn_pool: Array[PackedScene]
 
 func _ready() -> void:
-	#daspawn_timer.timeout.connect(_on_spawn_timer_timeout)
+	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	pass
 
 func _process(delta: float) -> void:
 	pass
 
 func _on_spawn_timer_timeout() -> void:
+	var random_int: int = randi_range(0, len(spawn_pool) -1)
+	var enemy_scene = spawn_pool[random_int]
+	
 	var spawn_position: Vector2 = get_random_map_position()
 	var spawned_enemy: Enemy = enemy_scene.instantiate()
 	get_tree().root.add_child(spawned_enemy)
 	spawned_enemy.global_position = spawn_position + Vector2.UP * 15
+	
+	spawn_timer.start(randf_range(5, 15))
 	pass
 
 func get_random_map_position() -> Vector2:
@@ -23,6 +29,5 @@ func get_random_map_position() -> Vector2:
 	var navmap: RID = tilemap_layer.get_navigation_map()
 	var navmesh_random_pos: Vector2 = NavigationServer2D.\
 	map_get_random_point(navmap, 1, false)
-	
 	
 	return navmesh_random_pos

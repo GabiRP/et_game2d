@@ -27,6 +27,6 @@ func do_attack(player: Player) -> void:
 		var att: Attack = Attack.new()
 		att.damage = 50
 		player.get_node("Hitbox").damage(att)
-		hit_particles.global_position = player.global_position
-		hit_particles.emitting = true
+		#hit_particles.global_position = player.global_position
+		#hit_particles.emitting = true
 		attack_timer.start(2)

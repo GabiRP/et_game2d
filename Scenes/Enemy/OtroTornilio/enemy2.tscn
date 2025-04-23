@@ -1,21 +1,21 @@
-[gd_scene load_steps=30 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=30 format=3 uid="uid://cjxwv541fpgro"]
 
-[ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
-[ext_resource type="Texture2D" uid="uid://1lu74ancs2xx" path="res://Scenes/Enemy/sprite.png" id="2_kiqm3"]
-[ext_resource type="Script" uid="uid://bv7v38inme6cd" path="res://Scenes/Enemy/player_raycast.gd" id="3_2t2r4"]
-[ext_resource type="Script" uid="uid://be2m0b88hq4sh" path="res://Scenes/Enemy/States/state_machine.gd" id="4_dmwl5"]
-[ext_resource type="Script" uid="uid://co8y6ovg8sdxv" path="res://Scenes/Enemy/States/EnemyIdle.gd" id="5_d40jh"]
-[ext_resource type="Script" uid="uid://cda32kltu7s85" path="res://Scenes/Enemy/gravity.gd" id="6_gx76c"]
-[ext_resource type="Script" uid="uid://blms38047wfp" path="res://Scenes/Enemy/States/EnemyFollow.gd" id="6_pqgp3"]
-[ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="8_4ad2a"]
-[ext_resource type="AnimationNodeStateMachine" uid="uid://cs76moh7ofl4i" path="res://Scenes/Enemy/Animations/enemy_statemachine.tres" id="10_6j3ko"]
-[ext_resource type="Script" uid="uid://b38lmbn7ltwey" path="res://Scenes/Enemy/animation.gd" id="11_2chwy"]
-[ext_resource type="Script" uid="uid://cjjn6j8ptpoba" path="res://Scenes/Enemy/player_attack_area.gd" id="12_beese"]
-[ext_resource type="PackedScene" uid="uid://dgiikai18fwx2" path="res://Scenes/Enemy/hit_particles.tscn" id="13_1vi6b"]
-[ext_resource type="Script" uid="uid://cv2ruu1nd3v01" path="res://Scenes/Enemy/health_label.gd" id="14_r1w2j"]
-[ext_resource type="Script" uid="uid://cndrb11mvhk5r" path="res://Scenes/Enemy/health.gd" id="14_u4wq1"]
-[ext_resource type="Script" uid="uid://dk08pmfvcstly" path="res://Scenes/Enemy/item_dropper.gd" id="15_u4wq1"]
-[ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/faster_shooting_upgrade.tscn" id="16_5luce"]
+[ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_he4n7"]
+[ext_resource type="Texture2D" uid="uid://cpbslcbu7oc74" path="res://Scenes/Enemy/OtroTornilio/tornillo_elite_insano_sheet.png" id="2_he4n7"]
+[ext_resource type="Script" uid="uid://bv7v38inme6cd" path="res://Scenes/Enemy/player_raycast.gd" id="3_78alm"]
+[ext_resource type="Script" uid="uid://be2m0b88hq4sh" path="res://Scenes/Enemy/States/state_machine.gd" id="4_3ntla"]
+[ext_resource type="Script" uid="uid://co8y6ovg8sdxv" path="res://Scenes/Enemy/States/EnemyIdle.gd" id="5_6n6ne"]
+[ext_resource type="Script" uid="uid://blms38047wfp" path="res://Scenes/Enemy/States/EnemyFollow.gd" id="6_sem0c"]
+[ext_resource type="Script" uid="uid://cda32kltu7s85" path="res://Scenes/Enemy/gravity.gd" id="7_k8sfq"]
+[ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="8_vycf4"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://cs76moh7ofl4i" path="res://Scenes/Enemy/Animations/enemy_statemachine.tres" id="9_uy5r2"]
+[ext_resource type="Script" uid="uid://b38lmbn7ltwey" path="res://Scenes/Enemy/animation.gd" id="10_2j7y6"]
+[ext_resource type="Script" uid="uid://cjjn6j8ptpoba" path="res://Scenes/Enemy/player_attack_area.gd" id="11_vn0c1"]
+[ext_resource type="PackedScene" uid="uid://dgiikai18fwx2" path="res://Scenes/Enemy/hit_particles.tscn" id="12_5k2cy"]
+[ext_resource type="Script" uid="uid://cv2ruu1nd3v01" path="res://Scenes/Enemy/health_label.gd" id="13_3xmbb"]
+[ext_resource type="Script" uid="uid://cndrb11mvhk5r" path="res://Scenes/Enemy/health.gd" id="14_3adgx"]
+[ext_resource type="Script" uid="uid://dk08pmfvcstly" path="res://Scenes/Enemy/item_dropper.gd" id="15_ia471"]
+[ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/faster_shooting_upgrade.tscn" id="16_eregb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -135,7 +135,7 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_6j3ko"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_2chwy"]
-nodes/AnimationNodeStateMachine/node = ExtResource("10_6j3ko")
+nodes/AnimationNodeStateMachine/node = ExtResource("9_uy5r2")
 nodes/AnimationNodeStateMachine/position = Vector2(140, 40)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_6j3ko")
 nodes/TimeScale/position = Vector2(420, 60)
@@ -148,17 +148,18 @@ size = Vector2(48.125, 46.875)
 [sub_resource type="LabelSettings" id="LabelSettings_r1w2j"]
 font_size = 11
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy2" type="CharacterBody2D"]
 scale = Vector2(1.6, 1.6)
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_nvvbs")
+script = ExtResource("1_he4n7")
 movement_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.228781, 8.21592e-05, 0.260018, 1)
 position = Vector2(0, -11.25)
 scale = Vector2(-0.383, 0.406)
-texture = ExtResource("2_kiqm3")
+texture = ExtResource("2_he4n7")
 hframes = 6
 vframes = 2
 
@@ -172,20 +173,18 @@ target_desired_distance = 20.0
 debug_enabled = true
 
 [node name="PlayerRaycast" type="Node" parent="."]
-script = ExtResource("3_2t2r4")
-detection_distance = null
-detection_fov = null
+script = ExtResource("3_78alm")
 
 [node name="Head" type="Node2D" parent="."]
 position = Vector2(-0.0600004, -21.92)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state", "enemy")]
-script = ExtResource("4_dmwl5")
+script = ExtResource("4_3ntla")
 initial_state = NodePath("Idle")
 enemy = NodePath("..")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("navigation_agent")]
-script = ExtResource("5_d40jh")
+script = ExtResource("5_6n6ne")
 wander_radius = 1000.0
 wander_time_window = 4.0
 navigation_agent = NodePath("../../NavigationAgent2D")
@@ -194,18 +193,18 @@ metadata/_custom_type_script = "uid://co8y6ovg8sdxv"
 [node name="IdleTimer" type="Timer" parent="StateMachine/Idle"]
 
 [node name="Follow" type="Node" parent="StateMachine"]
-script = ExtResource("6_pqgp3")
+script = ExtResource("6_sem0c")
 metadata/_custom_type_script = "uid://blms38047wfp"
 
 [node name="FollowTimer" type="Timer" parent="StateMachine/Follow"]
 
 [node name="Gravity" type="Node" parent="."]
-script = ExtResource("6_gx76c")
+script = ExtResource("7_k8sfq")
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 512
 collision_mask = 0
-script = ExtResource("8_4ad2a")
+script = ExtResource("8_vycf4")
 metadata/_custom_type_script = "uid://dvupaivofte2e"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -226,7 +225,7 @@ parameters/AnimationNodeStateMachine/Walk/blend_position = 0
 parameters/TimeScale/scale = 1.0
 
 [node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite", "animation_player", "enemy_hitbox")]
-script = ExtResource("11_2chwy")
+script = ExtResource("10_2j7y6")
 animation_tree = NodePath("../AnimationTree")
 sprite = NodePath("../Sprite2D")
 animation_player = NodePath("../AnimationPlayer")
@@ -239,7 +238,7 @@ one_shot = true
 [node name="PlayerArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 1048576
-script = ExtResource("12_beese")
+script = ExtResource("11_vn0c1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
 position = Vector2(-0.312505, -15.3125)
@@ -252,7 +251,7 @@ one_shot = true
 [node name="BulletDir" type="Marker2D" parent="PlayerArea"]
 position = Vector2(-9.375, -10)
 
-[node name="HitParticles" parent="PlayerArea" instance=ExtResource("13_1vi6b")]
+[node name="HitParticles" parent="PlayerArea" instance=ExtResource("12_5k2cy")]
 
 [node name="HealthLabel" type="Label" parent="."]
 offset_left = -20.0
@@ -263,7 +262,7 @@ text = "100"
 label_settings = SubResource("LabelSettings_r1w2j")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("14_r1w2j")
+script = ExtResource("13_3xmbb")
 full_health_color = Color(6.13667e-06, 0.549889, 3.85046e-07, 1)
 mid_health_color = Color(1, 0.376471, 0, 1)
 low_health_color = Color(0.780694, 4.54836e-06, 4.81307e-07, 1)
@@ -272,14 +271,14 @@ mid_health = 50.0
 low_health = 20.0
 
 [node name="Health" type="Node" parent="." node_paths=PackedStringArray("hitbox", "animation_player")]
-script = ExtResource("14_u4wq1")
+script = ExtResource("14_3adgx")
 hitbox = NodePath("../Hitbox")
 animation_player = NodePath("../AnimationPlayer")
 max_health = 100.0
 
 [node name="ItemDropper" type="Node" parent="."]
-script = ExtResource("15_u4wq1")
-item_pool = Array[PackedScene]([ExtResource("16_5luce")])
+script = ExtResource("15_ia471")
+item_pool = Array[PackedScene]([ExtResource("16_eregb")])
 
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
