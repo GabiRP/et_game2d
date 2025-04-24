@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://egcg0wx40wmd"]
+
+[ext_resource type="Script" uid="uid://cvdqw6bdflstx" path="res://Util/Strategy/Player/player_upgrade.gd" id="1_5hk8c"]
+[ext_resource type="Texture2D" uid="uid://bjn3q5sy36axj" path="res://Scenes/Player/Upgrades/MovementSpeed/salamalecum.png" id="2_43lfg"]
+[ext_resource type="Script" uid="uid://7q03uiohhrmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed_strategy.gd" id="2_dfgsa"]
+
+[sub_resource type="Resource" id="Resource_qxeyc"]
+script = ExtResource("2_dfgsa")
+texture = ExtResource("2_43lfg")
+upgrade_text = "+Speed"
+metadata/_custom_type_script = "uid://7q03uiohhrmd"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7pgw"]
+size = Vector2(33, 66)
+
+[sub_resource type="LabelSettings" id="LabelSettings_43lfg"]
+font_size = 12
+
+[node name="MovementSpeed" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
+script = ExtResource("1_5hk8c")
+upgrade_label = NodePath("Label")
+sprite = NodePath("Sprite2D")
+bullet_strategy = SubResource("Resource_qxeyc")
+metadata/_custom_type_script = "uid://cvdqw6bdflstx"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("2_43lfg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+scale = Vector2(0.46, 0.46)
+shape = SubResource("RectangleShape2D_p7pgw")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -21.0
+offset_top = -33.0
+offset_right = 22.0
+offset_bottom = -16.0
+text = "+Speed"
+label_settings = SubResource("LabelSettings_43lfg")

@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal upgrades_updated
+
 @export var SPEED: float = 300.0
 @export var SPRINT_SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -400.0
@@ -14,10 +16,11 @@ var shooting: bool = false
 var last_facing_dir: Vector2 = Vector2(-1,0)
 
 var upgrades: Array[BaseBulletStrategy] = []
+var player_upgrades: Array[BasePlayerStrategy] = []
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !alive:
-		queue_free.call()
+		queue_free.call_deferred()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -33,9 +36,6 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	var speed: float = SPEED
 	running = false
-	if Input.is_action_pressed("sprint"):
-		running = true
-		speed = SPRINT_SPEED
 	if direction:
 		velocity.x = direction * speed
 	else:
@@ -43,3 +43,13 @@ func _physics_process(delta: float) -> void:
 	if velocity.x and !shooting:
 		last_facing_dir.x = sign(velocity.x)
 	move_and_slide()
+
+func show_gameover() -> void:
+	alive = false
+
+func add_bullet_upgrade(upgrade: BaseBulletStrategy) -> void:
+	upgrades_updated.emit()
+	upgrades.append(upgrade)
+func add_player_upgrade(upgrade: BasePlayerStrategy) -> void:
+	upgrades_updated.emit()
+	player_upgrades.append(upgrade)

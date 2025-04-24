@@ -21,7 +21,7 @@ func _ready() -> void:
 			pass		#print("nav ended")
 	)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !alive:
 		queue_free()
 	if velocity.normalized().x == 1:

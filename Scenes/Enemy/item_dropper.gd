@@ -16,5 +16,5 @@ func spawn_random_upgrade() -> void:
 	var current_pos = enemy.global_position
 	var selected_item = item_pool[random_int].instantiate()
 	
-	get_tree().root.add_child(selected_item)
+	get_tree().root.add_child.call_deferred(selected_item)
 	selected_item.global_position = current_pos + Vector2.UP * 15

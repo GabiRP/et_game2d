@@ -24,7 +24,7 @@ func on_damaged(attack: Attack) -> void:
 	super(attack)
 	
 	if health <= 0:
-		player.alive = false
+		player.show_gameover()
 	else:
 		inv_timer.start()
 		player.invincible = false

@@ -10,7 +10,7 @@ func _ready() -> void:
 	spawn_timer.timeout.connect(_on_spawn_timer_timeout)
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func _on_spawn_timer_timeout() -> void:

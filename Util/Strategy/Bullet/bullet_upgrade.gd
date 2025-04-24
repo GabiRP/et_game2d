@@ -6,7 +6,7 @@
 # Docs: https://docs.godotengine.org/en/stable/tutorials/plugins/running_code_in_the_editor.html#how-to-use-tool
 ####################################################
 @tool
-extends Area2D
+class_name BulletUpgrade extends Area2D
 
 @export var upgrade_label : Label
 @export var sprite : Sprite2D
@@ -35,7 +35,6 @@ func _process(delta: float) -> void:
 			upgrade_label.text = bullet_strategy.upgrade_text
 			needs_update = false
 
-
 func on_body_entered(body: PhysicsBody2D):
 	if body is Player:
 		######################################
@@ -43,6 +42,6 @@ func on_body_entered(body: PhysicsBody2D):
 		# This adds the upgrade to our player,
 		# which the player uses when firing.
 		######################################
-		body.upgrades.append(bullet_strategy)
+		body.add_bullet_upgrade(bullet_strategy)
 		
 		queue_free()

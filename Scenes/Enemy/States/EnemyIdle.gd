@@ -37,7 +37,7 @@ func Exit() -> void:
 	#if enemy.is_seeing_player():
 		#Transitioned.emit(self, "follow")
 
-func physics_Update(delta: float) -> void:
+func physics_Update(_delta: float) -> void:
 	pass 
 
 func _on_rmt_timeout() -> void:
@@ -56,7 +56,7 @@ func _on_rmt_timeout() -> void:
 	var navmesh_random_pos: Vector2 = NavigationServer2D.map_get_closest_point(navmap, random_pos)
 	state_machine.enemy.set_movement_target(navmesh_random_pos)
 
-func _on_player_detected(position: Vector2) -> void:
+func _on_player_detected(_position: Vector2) -> void:
 	if state_machine.current_state != self:
 		return
 	Transitioned.emit(self, "follow")

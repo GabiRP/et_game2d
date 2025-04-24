@@ -25,8 +25,7 @@ func _ready() -> void:
 	#upgrade_label.text = bullet_strategy.upgrade_text
 
 
-func _process(delta: float) -> void:
-	
+func _process(_delta: float) -> void:
 	# This is run only when we're editing the scene
 	# It updates the texture of the sprite when we replace the upgrade strategy
 	if Engine.is_editor_hint():
@@ -43,6 +42,7 @@ func on_body_entered(body: PhysicsBody2D):
 		# This adds the upgrade to our player,
 		# which the player uses when firing.
 		######################################
+		body.add_player_upgrade(bullet_strategy)
 		bullet_strategy.apply_upgrade(body)
 		
 		queue_free()

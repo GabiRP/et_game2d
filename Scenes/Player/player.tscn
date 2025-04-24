@@ -1,13 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=23 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
-[ext_resource type="Script" uid="uid://dq3nre1ej4jje" path="res://Scenes/Player/player_health_label.gd" id="2_jlvik"]
 [ext_resource type="Script" uid="uid://i5ixx65m5jp7" path="res://Scenes/Player/playeranimation.gd" id="3_xpcdj"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cmjvnraxxnvw6" path="res://Scenes/Player/Animations/player_tree.tres" id="4_mtuoh"]
 [ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dvmincs7ofrvl" path="res://Scenes/Player/player_attack.gd" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://ct0h32h4daesy" path="res://Scenes/Player/health.gd" id="7_jlvik"]
+[ext_resource type="Texture2D" uid="uid://cu78ampslaowa" path="res://Scenes/Player/UI/corazonHUD_fondo.png" id="8_jhyir"]
+[ext_resource type="Texture2D" uid="uid://dtyiylex2w0wk" path="res://Scenes/Player/UI/corazonHUD_progress.png" id="9_74mp2"]
+[ext_resource type="Script" uid="uid://3mc5erv80a20" path="res://Scenes/Player/player_health_bar.gd" id="10_74mp2"]
+[ext_resource type="Script" uid="uid://h8naog2oduo5" path="res://Scenes/Player/upgrades_label.gd" id="11_74mp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(15.5, 28.5)
@@ -118,9 +121,9 @@ node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0,
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dd0ac"]
 size = Vector2(16, 28)
 
-[sub_resource type="LabelSettings" id="LabelSettings_0u5uq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_jlvik"]
+[sub_resource type="LabelSettings" id="LabelSettings_jhyir"]
+font_size = 12
+font_color = Color(0.295867, 0.295866, 0.295866, 1)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1048577
@@ -179,6 +182,8 @@ shape = SubResource("RectangleShape2D_dd0ac")
 position = Vector2(1, -14)
 script = ExtResource("7_0u5uq")
 firing_pos = NodePath("../Marker2D")
+start_attack_cooldown = null
+max_bullet_count = null
 metadata/_custom_type_script = "uid://dvmincs7ofrvl"
 
 [node name="AttackTimer" type="Timer" parent="PlayerAttack"]
@@ -199,45 +204,30 @@ max_health = 100.0
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -574.0
-offset_top = -338.0
-offset_right = 577.0
-offset_bottom = 310.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 1153.0
+offset_bottom = 650.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -101.0
-offset_top = -23.0
-offset_right = -43.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Health:"
-label_settings = SubResource("LabelSettings_0u5uq")
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1083.0
+offset_top = 589.0
+offset_right = 1147.0
+offset_bottom = 653.0
+texture_under = ExtResource("8_jhyir")
+texture_progress = ExtResource("9_74mp2")
+script = ExtResource("10_74mp2")
 
-[node name="healthlabel" type="Label" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -41.0
-offset_top = -23.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "100"
-label_settings = SubResource("LabelSettings_jlvik")
-script = ExtResource("2_jlvik")
-full_health_color = Color(1.08775e-05, 0.917792, 1.15514e-06, 1)
-mid_health_color = Color(1, 0.756863, 0, 1)
-low_health_color = Color(1, 0, 0, 1)
-full_health = 80.0
-mid_health = 50.0
-low_health = 30.0
+[node name="UpgradesLabel" type="Label" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 59.0
+text = "+Speed: 4
++Damage: 4
+"
+label_settings = SubResource("LabelSettings_jhyir")
+script = ExtResource("11_74mp2")
 
-[connection signal="health_changed" from="Health" to="CanvasLayer/Control/healthlabel" method="_on_health_changed"]
+[connection signal="upgrades_updated" from="." to="CanvasLayer/Control/UpgradesLabel" method="_on_player_upgrades_updated"]
+[connection signal="health_changed" from="Health" to="CanvasLayer/Control/TextureProgressBar" method="_on_health_changed"]

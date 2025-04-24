@@ -13,14 +13,14 @@ class_name PlayerAttackArea extends Area2D
 func _ready() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if has_overlapping_bodies():
 		var first_body = get_overlapping_bodies().get(0)
 		if first_body is Player:
 			do_attack(first_body)
 	pass
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func do_attack(player: Player) -> void:
@@ -43,7 +43,7 @@ func do_attack(player: Player) -> void:
 			return
 		print("attacking")
 		var att: Attack = Attack.new()
-		att.damage = 50
+		att.damage = damage
 		player.get_node("Hitbox").damage(att)
 		#hit_particles.global_position = player.global_position
 		#hit_particles.emitting = true

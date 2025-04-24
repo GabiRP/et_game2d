@@ -12,7 +12,7 @@ var is_detecting_player: bool = false
 func _ready() -> void:
 	pass 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !enemy.player.alive:
 		return
 	var raycast = enemy.raycast(enemy_head.global_position, enemy.player.global_position)

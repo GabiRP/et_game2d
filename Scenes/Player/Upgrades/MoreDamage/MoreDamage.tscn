@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bixm5c031ik6c"]
+
+[ext_resource type="Script" uid="uid://c6tvwwocuucmx" path="res://Util/Strategy/Bullet/bullet_upgrade.gd" id="1_q4t42"]
+[ext_resource type="Script" uid="uid://dmbh5clqt4a6o" path="res://Scenes/Player/Upgrades/MoreDamage/more_damage_strategy.gd" id="2_hv28g"]
+[ext_resource type="Texture2D" uid="uid://ckcfr57xo50sm" path="res://Scenes/Player/Upgrades/MoreDamage/protein.png" id="3_i31sx"]
+
+[sub_resource type="Resource" id="Resource_0d0er"]
+script = ExtResource("2_hv28g")
+texture = ExtResource("3_i31sx")
+upgrade_text = "+Damage"
+metadata/_custom_type_script = "uid://dmbh5clqt4a6o"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x5sp8"]
+radius = 16.0312
+
+[sub_resource type="LabelSettings" id="LabelSettings_4vluf"]
+font_size = 11
+
+[node name="BulletUpgrade" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
+script = ExtResource("1_q4t42")
+upgrade_label = NodePath("Label")
+sprite = NodePath("Sprite2D")
+bullet_strategy = SubResource("Resource_0d0er")
+metadata/_custom_type_script = "uid://c6tvwwocuucmx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x5sp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("3_i31sx")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -31.0
+offset_right = 26.0
+offset_bottom = -15.0
+text = "+Damage"
+label_settings = SubResource("LabelSettings_4vluf")

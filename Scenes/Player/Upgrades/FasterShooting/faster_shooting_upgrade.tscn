@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6iffklx5lsst"]
 
 [ext_resource type="Script" uid="uid://cvdqw6bdflstx" path="res://Util/Strategy/Player/player_upgrade.gd" id="1_q7xaq"]
-[ext_resource type="Script" uid="uid://dfnf3ccitrhki" path="res://Util/Strategy/Player/faster_shooting.gd" id="2_l4183"]
+[ext_resource type="Script" uid="uid://dfnf3ccitrhki" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting.gd" id="2_l4183"]
 [ext_resource type="Texture2D" uid="uid://cc7iob4gin3ei" path="res://Scenes/Player/Upgrades/FasterShooting/arma.png" id="4_3s0x2"]
 
 [sub_resource type="Resource" id="Resource_ng1ea"]

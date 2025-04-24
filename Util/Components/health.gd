@@ -25,7 +25,8 @@ signal died()
 
 func _ready():
 	if hitbox:
-		hitbox.damaged.connect(on_damaged)
+		if !hitbox.damaged.is_connected(on_damaged):
+			hitbox.damaged.connect(on_damaged)
 	
 	max_health_changed.emit(max_health)
 	health_changed.emit(health)
@@ -37,4 +38,4 @@ func on_damaged(attack: Attack):
 	
 	if health <= 0:
 		if animation_player:
-			animation_player.play("death")
+			pass#animation_player.play("death")

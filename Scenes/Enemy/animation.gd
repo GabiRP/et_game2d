@@ -22,7 +22,7 @@ func _ready():
 	enemy_hitbox.damaged.connect(_on_damaged)
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if !enemy.alive:
 		animation_tree.active = false
 		return

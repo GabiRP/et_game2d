@@ -10,7 +10,7 @@ var bullet_count: int = 30
 @onready var attack_timer: Timer = $AttackTimer
 var bullet_scene: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if Input.is_action_pressed("attack"):
 		player.shooting = true
 		if attack_timer.time_left > 0:
@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		spawned_bullet.rotation = player.last_facing_dir.angle()
 		spawned_bullet.is_player_bullet = true
 		
-		for strategy in player.upgrades:
-			strategy.apply_upgrade(spawned_bullet)
+		for upgrade in player.upgrades:
+			upgrade.bullet_strategy.apply_upgrade(spawned_bullet)
 		return
 	player.shooting = false
