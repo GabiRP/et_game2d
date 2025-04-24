@@ -182,8 +182,6 @@ shape = SubResource("RectangleShape2D_dd0ac")
 position = Vector2(1, -14)
 script = ExtResource("7_0u5uq")
 firing_pos = NodePath("../Marker2D")
-start_attack_cooldown = null
-max_bullet_count = null
 metadata/_custom_type_script = "uid://dvmincs7ofrvl"
 
 [node name="AttackTimer" type="Timer" parent="PlayerAttack"]

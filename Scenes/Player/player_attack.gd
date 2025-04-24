@@ -34,6 +34,6 @@ func _physics_process(_delta: float) -> void:
 		spawned_bullet.is_player_bullet = true
 		
 		for upgrade in player.upgrades:
-			upgrade.bullet_strategy.apply_upgrade(spawned_bullet)
+			upgrade.apply_upgrade(spawned_bullet)
 		return
 	player.shooting = false
