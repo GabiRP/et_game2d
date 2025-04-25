@@ -219,10 +219,11 @@ script = ExtResource("10_74mp2")
 
 [node name="UpgradesLabel" type="Label" parent="CanvasLayer/Control"]
 layout_mode = 0
-offset_right = 133.0
-offset_bottom = 59.0
-text = "+Speed: 4
-+Damage: 4
+offset_left = 25.0
+offset_top = 129.0
+offset_right = 158.0
+offset_bottom = 188.0
+text = "
 "
 label_settings = SubResource("LabelSettings_jhyir")
 script = ExtResource("11_74mp2")

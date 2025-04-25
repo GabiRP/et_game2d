@@ -9,18 +9,20 @@ func _on_player_upgrades_updated() -> void:
 	var player_upgrades: Array[BasePlayerStrategy] = player.player_upgrades
 	upgrades = {}
 	for p_upgrade in player_upgrades:
-		if upgrades[p_upgrade.upgrade_text]:
-			upgrades[p_upgrade.upgrade_text] += 1
+		if upgrades.has(p_upgrade.type):
+			upgrades[p_upgrade.type] += 1
 		else:
-			upgrades[p_upgrade.upgrade_text] = 1
+			upgrades[p_upgrade.type] = 1
 		pass
+	print(upgrades)
 	
 	for b_upgrade in bullet_upgrades:
-		if upgrades[b_upgrade.upgrade_text]:
-			upgrades[b_upgrade.upgrade_text] += 1
+		if upgrades.has(b_upgrade.type):
+			upgrades[b_upgrade.type] += 1
 		else:
-			upgrades[b_upgrade.upgrade_text] = 1
+			upgrades[b_upgrade.type] = 1
 		pass
+	print(upgrades)
 	text = ""
 	for entry in upgrades.keys():
-		text += entry + " " + upgrades[entry] + "\n"
+		text += str(entry) + " " + str(upgrades[entry]) + "\n"

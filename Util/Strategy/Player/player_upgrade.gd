@@ -22,7 +22,7 @@ class_name PlayerUpgrade extends Area2D
 func _ready() -> void:
 	body_entered.connect(on_body_entered)
 	sprite.texture = bullet_strategy.texture
-	#upgrade_label.text = bullet_strategy.upgrade_text
+	upgrade_label.text = bullet_strategy.upgrade_text
 
 
 func _process(_delta: float) -> void:
@@ -31,7 +31,7 @@ func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		if needs_update:
 			sprite.texture = bullet_strategy.texture
-			#upgrade_label.text = bullet_strategy.upgrade_text
+			upgrade_label.text = bullet_strategy.upgrade_text
 			needs_update = false
 
 

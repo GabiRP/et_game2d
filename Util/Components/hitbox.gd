@@ -6,4 +6,5 @@ extends Area2D
 signal damaged(attack: Attack)
 
 func damage(attack: Attack) -> void:
+	print(attack.damage)
 	damaged.emit(attack)

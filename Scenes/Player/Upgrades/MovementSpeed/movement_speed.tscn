@@ -8,6 +8,7 @@
 script = ExtResource("2_dfgsa")
 texture = ExtResource("2_43lfg")
 upgrade_text = "+Speed"
+type = "morespeed"
 metadata/_custom_type_script = "uid://7q03uiohhrmd"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7pgw"]

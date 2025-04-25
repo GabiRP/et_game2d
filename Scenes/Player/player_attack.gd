@@ -32,7 +32,7 @@ func _physics_process(_delta: float) -> void:
 		spawned_bullet.global_position = firing_pos.global_position
 		spawned_bullet.rotation = player.last_facing_dir.angle()
 		spawned_bullet.is_player_bullet = true
-		
+		spawned_bullet.attack = spawned_bullet.attack.duplicate()
 		for upgrade in player.upgrades:
 			upgrade.apply_upgrade(spawned_bullet)
 		return

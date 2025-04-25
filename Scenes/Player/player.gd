@@ -48,8 +48,8 @@ func show_gameover() -> void:
 	alive = false
 
 func add_bullet_upgrade(upgrade: BaseBulletStrategy) -> void:
-	upgrades_updated.emit()
 	upgrades.append(upgrade)
-func add_player_upgrade(upgrade: BasePlayerStrategy) -> void:
 	upgrades_updated.emit()
+func add_player_upgrade(upgrade: BasePlayerStrategy) -> void:
 	player_upgrades.append(upgrade)
+	upgrades_updated.emit()

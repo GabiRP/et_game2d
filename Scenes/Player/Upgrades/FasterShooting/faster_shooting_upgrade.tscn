@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6iffklx5lsst"]
+[gd_scene load_steps=7 format=3 uid="uid://b6iffklx5lsst"]
 
 [ext_resource type="Script" uid="uid://cvdqw6bdflstx" path="res://Util/Strategy/Player/player_upgrade.gd" id="1_q7xaq"]
 [ext_resource type="Script" uid="uid://dfnf3ccitrhki" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting.gd" id="2_l4183"]
@@ -7,14 +7,20 @@
 [sub_resource type="Resource" id="Resource_ng1ea"]
 script = ExtResource("2_l4183")
 texture = ExtResource("4_3s0x2")
-upgrade_text = "Base"
+upgrade_text = "+ShootingSpeed"
+type = "shootingspeed"
 metadata/_custom_type_script = "uid://dfnf3ccitrhki"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kuxid"]
+radius = 11.0
 
-[node name="FasterShootingUpgrade" type="Area2D" node_paths=PackedStringArray("sprite")]
+[sub_resource type="LabelSettings" id="LabelSettings_68k7l"]
+font_size = 10
+
+[node name="FasterShootingUpgrade" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
 collision_layer = 0
 script = ExtResource("1_q7xaq")
+upgrade_label = NodePath("Label")
 sprite = NodePath("Sprite2D")
 bullet_strategy = SubResource("Resource_ng1ea")
 metadata/_custom_type_script = "uid://cvdqw6bdflstx"
@@ -25,5 +31,15 @@ shape = SubResource("CircleShape2D_kuxid")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.88421, 0, 0.019728, 1)
 position = Vector2(0, 1.42109e-14)
-scale = Vector2(0.234375, 0.25)
+scale = Vector2(0.325, 0.325)
 texture = ExtResource("4_3s0x2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -23.0
+offset_right = 39.0
+offset_bottom = -9.0
+text = "+ShootingSpeed"
+label_settings = SubResource("LabelSettings_68k7l")
+horizontal_alignment = 1
+vertical_alignment = 1
