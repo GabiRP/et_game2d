@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=24 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
@@ -125,6 +125,9 @@ size = Vector2(16, 28)
 font_size = 12
 font_color = Color(0.295867, 0.295866, 0.295866, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_74mp2"]
+font_size = 66
+
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 1048577
 script = ExtResource("1_uvnfx")
@@ -134,7 +137,7 @@ position = Vector2(0, -14.25)
 shape = SubResource("RectangleShape2D_xf6vi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(1, -14)
+position = Vector2(0, -13)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -206,6 +209,7 @@ offset_left = 2.0
 offset_top = 2.0
 offset_right = 1153.0
 offset_bottom = 650.0
+scale = Vector2(1.66647, 1.6635)
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -227,6 +231,54 @@ text = "
 "
 label_settings = SubResource("LabelSettings_jhyir")
 script = ExtResource("11_74mp2")
+
+[node name="GameOver" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+scale = Vector2(1.66674, 1.66658)
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.345098, 0.345098, 0.345098, 0.807843)
+
+[node name="MainGameOver" type="ColorRect" parent="CanvasLayer/GameOver"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 170.0
+offset_right = 867.0
+offset_bottom = 480.0
+color = Color(0.233925, 0.233925, 0.233925, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/GameOver/MainGameOver"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 575.0
+offset_bottom = 92.0
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_74mp2")
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="CanvasLayer/GameOver/MainGameOver"]
+layout_mode = 0
+offset_left = 250.577
+offset_top = 140.816
+offset_right = 325.577
+offset_bottom = 171.816
+focus_mode = 0
+text = "RESTART"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/GameOver/MainGameOver"]
+offset_left = 250.577
+offset_top = 180.561
+offset_right = 325.577
+offset_bottom = 211.561
+focus_mode = 0
+text = "QUIT"
 
 [connection signal="upgrades_updated" from="." to="CanvasLayer/Control/UpgradesLabel" method="_on_player_upgrades_updated"]
 [connection signal="health_changed" from="Health" to="CanvasLayer/Control/TextureProgressBar" method="_on_health_changed"]

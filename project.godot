@@ -11,9 +11,20 @@ config_version=5
 [application]
 
 config/name="et_game2d"
-run/main_scene="uid://cnp3vxbg2142q"
+run/main_scene="uid://6ppl6y1pljie"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameLoad="*res://Autoload/game_load.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

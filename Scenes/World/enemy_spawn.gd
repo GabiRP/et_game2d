@@ -21,7 +21,7 @@ func _on_spawn_timer_timeout() -> void:
 		var enemy_scene = spawn_pool[random_int]
 		var spawn_position: Vector2 = get_random_map_position()
 		var spawned_enemy: Enemy = enemy_scene.instantiate()
-		get_tree().root.add_child(spawned_enemy)
+		get_tree().root.get_node("World").add_child(spawned_enemy)
 		spawned_enemy.global_position = spawn_position + Vector2.UP * 15
 		pass
 	

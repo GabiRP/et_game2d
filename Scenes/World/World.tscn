@@ -41,12 +41,11 @@ autostart = true
 
 [node name="BulletUpgrade" parent="." instance=ExtResource("8_kuxid")]
 position = Vector2(-464, 124)
-needs_update = true
+needs_update = false
 
 [node name="FasterShootingUpgrade" parent="." instance=ExtResource("9_ng1ea")]
 position = Vector2(-385, 127)
-needs_update = true
 
 [node name="MovementSpeed" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(-339, 120)
-needs_update = true
+needs_update = false
