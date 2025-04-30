@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cjxwv541fpgro"]
+[gd_scene load_steps=33 format=3 uid="uid://cjxwv541fpgro"]
 
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_he4n7"]
 [ext_resource type="Texture2D" uid="uid://cpbslcbu7oc74" path="res://Scenes/Enemy/OtroTornilio/tornillo_elite_insano_sheet.png" id="2_he4n7"]
@@ -10,7 +10,8 @@
 [ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="8_vycf4"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cs76moh7ofl4i" path="res://Scenes/Enemy/Animations/enemy_statemachine.tres" id="9_uy5r2"]
 [ext_resource type="Script" uid="uid://b38lmbn7ltwey" path="res://Scenes/Enemy/animation.gd" id="10_2j7y6"]
-[ext_resource type="Script" uid="uid://cjjn6j8ptpoba" path="res://Scenes/Enemy/player_attack_area.gd" id="11_vn0c1"]
+[ext_resource type="Script" uid="uid://t6fxc7730g3w" path="res://Scenes/Enemy/OtroTornilio/animation_tree.gd" id="10_3ntla"]
+[ext_resource type="Script" uid="uid://cjeskr7slierw" path="res://Scenes/Enemy/OtroTornilio/player_area_enem2.gd" id="11_78alm"]
 [ext_resource type="PackedScene" uid="uid://dgiikai18fwx2" path="res://Scenes/Enemy/hit_particles.tscn" id="12_5k2cy"]
 [ext_resource type="Script" uid="uid://cv2ruu1nd3v01" path="res://Scenes/Enemy/health_label.gd" id="13_3xmbb"]
 [ext_resource type="Script" uid="uid://cndrb11mvhk5r" path="res://Scenes/Enemy/health.gd" id="14_3adgx"]
@@ -145,7 +146,7 @@ nodes/output/position = Vector2(580, 80)
 node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_beese"]
-size = Vector2(48.125, 46.875)
+size = Vector2(48.125, 111.184)
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1w2j"]
 font_size = 11
@@ -220,9 +221,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_2chwy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/AnimationNodeStateMachine/Idle/blend_position = 0.0938023
-parameters/AnimationNodeStateMachine/Walk/blend_position = -0.080402
+parameters/AnimationNodeStateMachine/Idle/blend_position = -0.00332224
+parameters/AnimationNodeStateMachine/Walk/blend_position = -0.111296
 parameters/TimeScale/scale = 1.0
+script = ExtResource("10_3ntla")
 
 [node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite", "animation_player", "enemy_hitbox")]
 script = ExtResource("10_2j7y6")
@@ -239,10 +241,10 @@ one_shot = true
 scale = Vector2(8.525, 1.9)
 collision_layer = 0
 collision_mask = 1048576
-script = ExtResource("11_vn0c1")
+script = ExtResource("11_78alm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
-position = Vector2(-0.312505, -15.3125)
+position = Vector2(-0.312505, -8.22368)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_beese")
 

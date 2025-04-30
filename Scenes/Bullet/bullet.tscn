@@ -60,7 +60,7 @@ _data = {
 collision_layer = 0
 collision_mask = 260
 script = ExtResource("1_nt0l2")
-speed = 450.0
+speed = 900.0
 attack = SubResource("Resource_anrnm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

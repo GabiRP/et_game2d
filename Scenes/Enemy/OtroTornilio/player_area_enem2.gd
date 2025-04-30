@@ -1,4 +1,4 @@
-class_name PlayerAttackArea extends Area2D
+class_name PlayerAttackAreaE2 extends Area2D
 
 @onready var enemy: Enemy = get_owner()
 @onready var attack_timer: Timer = $AttackTimer
@@ -27,10 +27,15 @@ func do_attack(player: Player) -> void:
 	if !player_raycast.is_detecting_player:
 		return
 	if attack_timer.time_left <= 0:
-		print("attacking")
-		var att: Attack = Attack.new()
-		att.damage = damage
-		player.get_node("Hitbox").damage(att)
-		#hit_particles.global_position = player.global_position
-		#hit_particles.emitting = true
+		var fir_pos: float = -1.0
+		if sign(enemy.last_facing_dir.x) >= 1:
+			fir_pos = 1.0
+		firing_pos.position.x = fir_pos
+		var spawned_bullet: Bullet = bullet_scene.instantiate()
+		get_tree().root.add_child(spawned_bullet)
+		spawned_bullet.global_position = firing_pos.global_position
+		var rot = firing_pos.global_position.direction_to(player.hitbox.global_position)\
+			.angle()
+		spawned_bullet.rotation = rot
+		spawned_bullet.is_player_bullet = false
 		attack_timer.start(2)

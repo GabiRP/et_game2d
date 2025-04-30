@@ -1,10 +1,10 @@
 [gd_resource type="AnimationNodeBlendSpace1D" load_steps=3 format=3 uid="uid://dbahhnigkerdt"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r1w2j"]
-animation = &"idle_left"
+animation = &"idle_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u4wq1"]
-animation = &"idle_right"
+animation = &"idle_left"
 
 [resource]
 blend_point_0/node = SubResource("AnimationNodeAnimation_r1w2j")

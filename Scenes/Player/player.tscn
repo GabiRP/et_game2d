@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=25 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtyiylex2w0wk" path="res://Scenes/Player/UI/corazonHUD_progress.png" id="9_74mp2"]
 [ext_resource type="Script" uid="uid://3mc5erv80a20" path="res://Scenes/Player/player_health_bar.gd" id="10_74mp2"]
 [ext_resource type="Script" uid="uid://h8naog2oduo5" path="res://Scenes/Player/upgrades_label.gd" id="11_74mp2"]
+[ext_resource type="Script" uid="uid://txlt8m78wl3f" path="res://Scenes/Player/game_over.gd" id="12_oikmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(15.5, 28.5)
@@ -138,6 +139,8 @@ shape = SubResource("RectangleShape2D_xf6vi")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -13)
+zoom = Vector2(1.205, 1.205)
+limit_bottom = 500
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -233,11 +236,13 @@ label_settings = SubResource("LabelSettings_jhyir")
 script = ExtResource("11_74mp2")
 
 [node name="GameOver" type="Control" parent="CanvasLayer"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 scale = Vector2(1.66674, 1.66658)
+script = ExtResource("12_oikmp")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/GameOver"]
 layout_mode = 0
@@ -264,6 +269,7 @@ label_settings = SubResource("LabelSettings_74mp2")
 horizontal_alignment = 1
 
 [node name="RestartButton" type="Button" parent="CanvasLayer/GameOver/MainGameOver"]
+visible = false
 layout_mode = 0
 offset_left = 250.577
 offset_top = 140.816
@@ -273,6 +279,7 @@ focus_mode = 0
 text = "RESTART"
 
 [node name="QuitButton" type="Button" parent="CanvasLayer/GameOver/MainGameOver"]
+layout_mode = 0
 offset_left = 250.577
 offset_top = 180.561
 offset_right = 325.577
@@ -282,3 +289,4 @@ text = "QUIT"
 
 [connection signal="upgrades_updated" from="." to="CanvasLayer/Control/UpgradesLabel" method="_on_player_upgrades_updated"]
 [connection signal="health_changed" from="Health" to="CanvasLayer/Control/TextureProgressBar" method="_on_health_changed"]
+[connection signal="pressed" from="CanvasLayer/GameOver/MainGameOver/QuitButton" to="CanvasLayer/GameOver" method="_on_quit_button_pressed"]

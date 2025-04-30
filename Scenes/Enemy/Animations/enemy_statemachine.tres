@@ -3,10 +3,10 @@
 [ext_resource type="AnimationNodeBlendSpace1D" uid="uid://dbahhnigkerdt" path="res://Scenes/Enemy/Animations/enemy_idledirection.tres" id="1_1v6w4"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6j3ko"]
-animation = &"walk_right"
+animation = &"walk_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2chwy"]
-animation = &"walk_left"
+animation = &"walk_right"
 
 [sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_beese"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_6j3ko")
@@ -28,7 +28,7 @@ advance_expression = "!moving"
 
 [resource]
 states/Idle/node = ExtResource("1_1v6w4")
-states/Idle/position = Vector2(371, 154)
+states/Idle/position = Vector2(371, 153)
 states/Start/position = Vector2(371, 34)
 states/Walk/node = SubResource("AnimationNodeBlendSpace1D_beese")
 states/Walk/position = Vector2(516, 141)

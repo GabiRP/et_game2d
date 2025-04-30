@@ -24,14 +24,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if !alive:
 		queue_free()
-	if velocity.normalized().x == 1:
-		$Sprite2D.flip_h = true
-		$Head.rotation = deg_to_rad(90)
-		pass
-	elif velocity.normalized().x == -1:
-		$Sprite2D.flip_h = false
-		$Head.rotation = deg_to_rad(0)
-		pass
 	pass
 
 func set_movement_target(movement_target: Vector2):
@@ -56,8 +48,6 @@ func _physics_process(delta):
 	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
 	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * movement_speed
 	new_velocity = Vector2(new_velocity.x, 0)
-	if new_velocity.x:
-		last_facing_dir.x = sign(velocity.x)
 	if !is_on_floor():
 		new_velocity.y += get_gravity().y * 5* delta
 	if navigation_agent.avoidance_enabled:

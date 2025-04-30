@@ -15,6 +15,8 @@ extends Node
 @onready var damage_timer: Timer = $Timer
 var last_facing_dir: Vector2 = Vector2(0,1)
 
+var idle: bool = true
+
 func _ready():
 	# The animation tree is inactive while outside of gameplay.
 	# This makes it easier to edit animations in the editor.
@@ -27,12 +29,11 @@ func _physics_process(_delta: float) -> void:
 		animation_tree.active = false
 		return
 	
-	var idle = !enemy.velocity.x
+	idle = !enemy.velocity.x
 	if !idle:
-		last_facing_dir = enemy.velocity
-	
+		last_facing_dir = sign(enemy.velocity)
+	enemy.last_facing_dir = last_facing_dir
 	var time_scale = .5
-	
 	animation_tree.set("parameters/TimeScale/scale", time_scale)
 	animation_tree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", sign(last_facing_dir.x))
 	animation_tree.set("parameters/AnimationNodeStateMachine/Walk/blend_position", sign(last_facing_dir.x))

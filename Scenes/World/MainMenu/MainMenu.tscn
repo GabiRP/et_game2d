@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://6ppl6y1pljie"]
+[gd_scene load_steps=9 format=3 uid="uid://6ppl6y1pljie"]
 
-[ext_resource type="Texture2D" uid="uid://bkr2m30wm500l" path="res://Scenes/World/MainMenu/Fondo.png" id="1_4v6wx"]
-[ext_resource type="Texture2D" uid="uid://d00aaudkh8ytq" path="res://Scenes/World/MainMenu/Boton_1.png" id="2_pcelb"]
-[ext_resource type="Texture2D" uid="uid://xed3n7fmpsle" path="res://Scenes/World/MainMenu/Boton_2.png" id="3_dcvpy"]
+[ext_resource type="Script" uid="uid://1qotraph8y6l" path="res://Scenes/World/MainMenu/main_menu.gd" id="1_6ict2"]
+[ext_resource type="Texture2D" uid="uid://b5t7pix38u2kn" path="res://Scenes/World/MainMenu/menu_background.png" id="2_6ict2"]
+[ext_resource type="FontFile" uid="uid://dd4rymgkxojn2" path="res://Assets/Fonts/Daydream.ttf" id="2_dcvpy"]
+[ext_resource type="Texture2D" uid="uid://coddc4bd365e3" path="res://Scenes/World/MainMenu/Play_button-export.png" id="4_r32dg"]
+[ext_resource type="Texture2D" uid="uid://c6tb666jd5seo" path="res://Scenes/World/MainMenu/pressed_button-export.png" id="5_e2l0d"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ict2"]
-font_size = 241
+font = ExtResource("2_dcvpy")
+font_size = 211
 
 [sub_resource type="LabelSettings" id="LabelSettings_r32dg"]
-font_size = 121
+font = ExtResource("2_dcvpy")
+font_size = 116
+
+[sub_resource type="LabelSettings" id="LabelSettings_e2l0d"]
+font = ExtResource("2_dcvpy")
+font_size = 116
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -17,56 +25,65 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_6ict2")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-texture = ExtResource("1_4v6wx")
+texture = ExtResource("2_6ict2")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = 501.0
-offset_top = 215.0
-offset_right = 1640.0
-offset_bottom = 544.0
+offset_left = 568.0
+offset_top = 74.0
+offset_right = 2638.0
+offset_bottom = 424.0
 scale = Vector2(0.722444, 0.719674)
 text = "JUEGUITO"
 label_settings = SubResource("LabelSettings_6ict2")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Play" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 501.0
-offset_top = 565.0
-offset_right = 949.0
-offset_bottom = 797.0
-texture_normal = ExtResource("2_pcelb")
-texture_pressed = ExtResource("3_dcvpy")
+offset_left = 731.0
+offset_top = 417.0
+offset_right = 1631.0
+offset_bottom = 1011.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("4_r32dg")
+texture_pressed = ExtResource("5_e2l0d")
 
-[node name="Label" type="Label" parent="TextureButton"]
+[node name="Label" type="Label" parent="Play"]
 layout_mode = 0
-offset_top = 16.0
-offset_right = 448.0
-offset_bottom = 216.0
+offset_left = 46.6666
+offset_top = 171.111
+offset_right = 853.667
+offset_bottom = 385.111
 text = "JUGAR"
 label_settings = SubResource("LabelSettings_r32dg")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TextureButton" type="TextureButton" parent="TextureButton"]
-offset_left = 1.0
-offset_top = 242.0
-offset_right = 449.0
-offset_bottom = 474.0
-texture_normal = ExtResource("2_pcelb")
-texture_pressed = ExtResource("3_dcvpy")
-
-[node name="Label" type="Label" parent="TextureButton/TextureButton"]
+[node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_top = 16.0
-offset_right = 448.0
-offset_bottom = 216.0
+offset_left = 731.0
+offset_top = 725.0
+offset_right = 1631.0
+offset_bottom = 1319.0
+scale = Vector2(0.45, 0.45)
+texture_normal = ExtResource("4_r32dg")
+texture_pressed = ExtResource("5_e2l0d")
+
+[node name="Label" type="Label" parent="Quit"]
+layout_mode = 0
+offset_left = 5.34058e-05
+offset_top = 193.333
+offset_right = 920.0
+offset_bottom = 393.333
 text = "SORTIR"
-label_settings = SubResource("LabelSettings_r32dg")
+label_settings = SubResource("LabelSettings_e2l0d")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Play" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_button_pressed"]

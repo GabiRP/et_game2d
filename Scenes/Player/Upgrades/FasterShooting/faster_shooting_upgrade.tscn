@@ -23,6 +23,7 @@ script = ExtResource("1_q7xaq")
 upgrade_label = NodePath("Label")
 sprite = NodePath("Sprite2D")
 bullet_strategy = SubResource("Resource_ng1ea")
+needs_update = true
 metadata/_custom_type_script = "uid://cvdqw6bdflstx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

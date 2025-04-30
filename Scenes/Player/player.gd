@@ -6,6 +6,7 @@ signal upgrades_updated
 @export var SPRINT_SPEED: float = 400.0
 @export var JUMP_VELOCITY: float = -400.0
 
+@onready var game_over: Control = $"CanvasLayer/GameOver"
 @onready var hitbox: Hitbox = $Hitbox
 @onready var attack: PlayerAttack = $PlayerAttack
 var alive: bool = true
@@ -19,10 +20,11 @@ var upgrades: Array[BaseBulletStrategy] = []
 var player_upgrades: Array[BasePlayerStrategy] = []
 
 func _process(_delta: float) -> void:
-	if !alive:
-		queue_free.call_deferred()
+	pass
 
 func _physics_process(delta: float) -> void:
+	if !alive:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -46,6 +48,7 @@ func _physics_process(delta: float) -> void:
 
 func show_gameover() -> void:
 	alive = false
+	game_over.visible = true
 
 func add_bullet_upgrade(upgrade: BaseBulletStrategy) -> void:
 	upgrades.append(upgrade)

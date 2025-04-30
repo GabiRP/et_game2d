@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=33 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
 [ext_resource type="Texture2D" uid="uid://1lu74ancs2xx" path="res://Scenes/Enemy/sprite.png" id="2_kiqm3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://blms38047wfp" path="res://Scenes/Enemy/States/EnemyFollow.gd" id="6_pqgp3"]
 [ext_resource type="Script" uid="uid://dvupaivofte2e" path="res://Util/Components/hitbox.gd" id="8_4ad2a"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://cs76moh7ofl4i" path="res://Scenes/Enemy/Animations/enemy_statemachine.tres" id="10_6j3ko"]
+[ext_resource type="Script" uid="uid://vbfl3ik1cner" path="res://Scenes/Enemy/animation_tree.gd" id="10_x4yp7"]
 [ext_resource type="Script" uid="uid://b38lmbn7ltwey" path="res://Scenes/Enemy/animation.gd" id="11_2chwy"]
 [ext_resource type="Script" uid="uid://cjjn6j8ptpoba" path="res://Scenes/Enemy/player_attack_area.gd" id="12_beese"]
 [ext_resource type="PackedScene" uid="uid://dgiikai18fwx2" path="res://Scenes/Enemy/hit_particles.tscn" id="13_1vi6b"]
@@ -74,40 +75,6 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6j3ko"]
-resource_name = "walk_left"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2i(3, 0), Vector2i(4, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2chwy"]
-resource_name = "walk_right"
-length = 0.2
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2i(2, 0), Vector2i(5, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_r1w2j"]
 resource_name = "white"
 length = 0.1
@@ -124,13 +91,47 @@ tracks/0/keys = {
 "values": [Vector2i(0, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_2chwy"]
+resource_name = "walk_left"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6j3ko"]
+resource_name = "walk_right"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(4, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beese"]
 _data = {
 &"RESET": SubResource("Animation_kiqm3"),
 &"idle_left": SubResource("Animation_beese"),
 &"idle_right": SubResource("Animation_1vi6b"),
-&"walk_left": SubResource("Animation_6j3ko"),
-&"walk_right": SubResource("Animation_2chwy"),
+&"walk_left": SubResource("Animation_2chwy"),
+&"walk_right": SubResource("Animation_6j3ko"),
 &"white": SubResource("Animation_r1w2j")
 }
 
@@ -221,9 +222,10 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_2chwy")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/AnimationNodeStateMachine/Idle/blend_position = -0.0753769
-parameters/AnimationNodeStateMachine/Walk/blend_position = -0.137353
+parameters/AnimationNodeStateMachine/Idle/blend_position = -0.0232558
+parameters/AnimationNodeStateMachine/Walk/blend_position = -0.0581396
 parameters/TimeScale/scale = 1.0
+script = ExtResource("10_x4yp7")
 
 [node name="Animation" type="Node" parent="." node_paths=PackedStringArray("animation_tree", "sprite", "animation_player", "enemy_hitbox")]
 script = ExtResource("11_2chwy")
