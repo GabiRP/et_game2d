@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="17_78alm"]
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="18_3ntla"]
 [ext_resource type="AudioStream" uid="uid://bxmd15guwcioi" path="res://Sonidos/enemigo muerto.mp3" id="20_6n6ne"]
+[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="20_6n6ne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -172,7 +173,6 @@ shape = SubResource("RectangleShape2D_xf6vi")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 30.0
 target_desired_distance = 20.0
-debug_enabled = true
 
 [node name="PlayerRaycast" type="Node" parent="."]
 script = ExtResource("3_78alm")
@@ -282,7 +282,7 @@ max_health = 50.0
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_ia471")
-item_pool = Array[PackedScene]([ExtResource("16_eregb"), ExtResource("17_78alm"), ExtResource("18_3ntla")])
+item_pool = Array[PackedScene]([ExtResource("16_eregb"), ExtResource("17_78alm"), ExtResource("18_3ntla"), ExtResource("20_6n6ne")])
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("20_6n6ne")
