@@ -172,7 +172,6 @@ shape = SubResource("RectangleShape2D_xf6vi")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 30.0
 target_desired_distance = 20.0
-debug_enabled = true
 
 [node name="PlayerRaycast" type="Node" parent="."]
 script = ExtResource("3_78alm")
