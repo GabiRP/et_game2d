@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://5k445ksbvmpx"]
+[gd_scene load_steps=34 format=3 uid="uid://5k445ksbvmpx"]
 
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_nvvbs"]
 [ext_resource type="Texture2D" uid="uid://1lu74ancs2xx" path="res://Scenes/Enemy/sprite.png" id="2_kiqm3"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="16_5luce"]
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="16_d2jnu"]
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="17_x4yp7"]
+[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="20_tqvt7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -281,7 +282,7 @@ max_health = 80.0
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_u4wq1")
-item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce"), null])
+item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce"), ExtResource("20_tqvt7")])
 
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
