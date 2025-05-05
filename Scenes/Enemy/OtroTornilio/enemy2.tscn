@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cjxwv541fpgro"]
+[gd_scene load_steps=34 format=3 uid="uid://cjxwv541fpgro"]
 
 [ext_resource type="Script" uid="uid://defabqc73l8al" path="res://Scenes/Enemy/enemy.gd" id="1_he4n7"]
 [ext_resource type="Texture2D" uid="uid://cpbslcbu7oc74" path="res://Scenes/Enemy/OtroTornilio/tornillo_elite_insano_sheet.png" id="2_he4n7"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="16_eregb"]
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="17_78alm"]
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="18_3ntla"]
+[ext_resource type="AudioStream" uid="uid://bxmd15guwcioi" path="res://Sonidos/enemigo muerto.mp3" id="20_6n6ne"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(21, 28.42)
@@ -282,6 +283,11 @@ max_health = 50.0
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_ia471")
 item_pool = Array[PackedScene]([ExtResource("16_eregb"), ExtResource("17_78alm"), ExtResource("18_3ntla")])
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_6n6ne")
+volume_db = 10.0
+pitch_scale = 0.96
 
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
