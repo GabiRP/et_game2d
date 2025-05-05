@@ -11,6 +11,7 @@ signal upgrades_updated
 @onready var attack: PlayerAttack = $PlayerAttack
 @onready var health: PlayerHealth = $Health
 @onready var jump_sound: AudioStreamPlayer = $saltar
+@onready var item_sound: AudioStreamPlayer = $Item
 
 var alive: bool = true
 var running: bool = false

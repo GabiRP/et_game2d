@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=26 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
@@ -12,8 +12,6 @@
 [ext_resource type="Script" uid="uid://3mc5erv80a20" path="res://Scenes/Player/player_health_bar.gd" id="10_74mp2"]
 [ext_resource type="Script" uid="uid://h8naog2oduo5" path="res://Scenes/Player/upgrades_label.gd" id="11_74mp2"]
 [ext_resource type="Script" uid="uid://txlt8m78wl3f" path="res://Scenes/Player/game_over.gd" id="12_oikmp"]
-[ext_resource type="AudioStream" uid="uid://7yuhusl2wjs1" path="res://Sonidos/salto (mp3cut.net).mp3" id="13_06tpx"]
-[ext_resource type="AudioStream" uid="uid://7yuhusl2wjs1" path="res://Sonidos/salto (mp3cut.net).mp3" id="14_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://7yuhusl2wjs1" path="res://Sonidos/salto (mp3cut.net).mp3" id="15_dey5f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
@@ -291,16 +289,17 @@ focus_mode = 0
 text = "QUIT"
 
 [node name="disparar" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_06tpx")
-volume_db = 6.559
+stream = ExtResource("15_dey5f")
+volume_db = -10.306
 pitch_scale = 1.7
 
 [node name="saltar" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_7g0yx")
-volume_db = 8.432
+stream = ExtResource("15_dey5f")
+volume_db = -11.244
 
 [node name="Item" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_dey5f")
+volume_db = -9.369
 
 [connection signal="upgrades_updated" from="." to="CanvasLayer/Control/UpgradesLabel" method="_on_player_upgrades_updated"]
 [connection signal="health_changed" from="Health" to="CanvasLayer/Control/TextureProgressBar" method="_on_health_changed"]
