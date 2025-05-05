@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://cnp3vxbg2142q"]
+[gd_scene load_steps=12 format=4 uid="uid://cnp3vxbg2142q"]
 
 [ext_resource type="PackedScene" uid="uid://dbcroju10xnqn" path="res://Scenes/Player/player.tscn" id="1_0nbjp"]
 [ext_resource type="TileSet" uid="uid://b68fik5rc7y86" path="res://Assets/Tiles/WorldBackgroundTileSet.tres" id="1_27jhl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="8_kjd5s"]
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="8_kuxid"]
 [ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="9_ng1ea"]
+[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="11_ng1ea"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hveh7")
@@ -50,3 +51,15 @@ needs_update = false
 [node name="MovementSpeed" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(-339, 120)
 needs_update = false
+
+[node name="GetHealthUpgrade" parent="." instance=ExtResource("11_ng1ea")]
+position = Vector2(-550, 104)
+
+[node name="GetHealthUpgrade2" parent="." instance=ExtResource("11_ng1ea")]
+position = Vector2(-583, 167)
+
+[node name="GetHealthUpgrade3" parent="." instance=ExtResource("11_ng1ea")]
+position = Vector2(-674, 172)
+
+[node name="GetHealthUpgrade4" parent="." instance=ExtResource("11_ng1ea")]
+position = Vector2(-623, 175)

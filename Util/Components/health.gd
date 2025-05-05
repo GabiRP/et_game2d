@@ -17,11 +17,15 @@ signal died()
 		max_health = val
 		max_health_changed.emit(max_health)
 		health = max_health
+
 @onready var health := max_health:
 	set(val):
 		health = val
+		if health > max_health:
+			print("maxhealth bigger")
+			health = max_health
+		print("set health to " + str(health))
 		health_changed.emit(health)
-
 
 func _ready():
 	if hitbox:

@@ -9,6 +9,7 @@ signal upgrades_updated
 @onready var game_over: Control = $"CanvasLayer/GameOver"
 @onready var hitbox: Hitbox = $Hitbox
 @onready var attack: PlayerAttack = $PlayerAttack
+@onready var health: PlayerHealth = $Health
 var alive: bool = true
 var running: bool = false
 var invincible: bool = false

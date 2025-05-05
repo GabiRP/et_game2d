@@ -5,5 +5,5 @@ extends Resource
 @export var upgrade_text: String = "Base"
 @export var type: String = "base"
 
-func apply_upgrade(_player: Player) -> void:
-	pass
+func apply_upgrade(_player: Player) -> bool:
+	return true

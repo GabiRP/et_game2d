@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cldef86ynji08"]
+
+[ext_resource type="Script" uid="uid://cvdqw6bdflstx" path="res://Util/Strategy/Player/player_upgrade.gd" id="1_1vxlf"]
+[ext_resource type="Script" uid="uid://dfb5kc7u76hf4" path="res://Scenes/Player/Upgrades/Health/Health.gd" id="2_dbs61"]
+[ext_resource type="Texture2D" uid="uid://sw2oxegubaym" path="res://Scenes/Player/Upgrades/Health/corazonHUD_progress.png" id="3_ack45"]
+
+[sub_resource type="Resource" id="Resource_xdd5v"]
+script = ExtResource("2_dbs61")
+texture = ExtResource("3_ack45")
+upgrade_text = "Heal"
+type = "heal"
+metadata/_custom_type_script = "uid://dfb5kc7u76hf4"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kuxid"]
+radius = 11.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_68k7l"]
+font_size = 10
+
+[node name="GetHealthUpgrade" type="Area2D" node_paths=PackedStringArray("upgrade_label", "sprite")]
+collision_layer = 0
+script = ExtResource("1_1vxlf")
+upgrade_label = NodePath("Label")
+sprite = NodePath("Sprite2D")
+bullet_strategy = SubResource("Resource_xdd5v")
+metadata/_custom_type_script = "uid://cvdqw6bdflstx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kuxid")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.88421, 0, 0.019728, 1)
+position = Vector2(0, 3)
+scale = Vector2(0.325, 0.325)
+texture = ExtResource("3_ack45")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -39.0
+offset_top = -23.0
+offset_right = 39.0
+offset_bottom = -9.0
+text = "Base"
+label_settings = SubResource("LabelSettings_68k7l")
+horizontal_alignment = 1
+vertical_alignment = 1
