@@ -8,6 +8,8 @@ var bullet_count: int = 30
 
 @onready var player: Player = get_owner()
 @onready var attack_timer: Timer = $AttackTimer
+@onready var shoot_sound: AudioStreamPlayer = $"../disparar"
+
 var bullet_scene: PackedScene = preload("res://Scenes/Bullet/bullet.tscn")
 
 func _physics_process(_delta: float) -> void:
@@ -35,5 +37,8 @@ func _physics_process(_delta: float) -> void:
 		spawned_bullet.attack = spawned_bullet.attack.duplicate()
 		for upgrade in player.upgrades:
 			upgrade.apply_upgrade(spawned_bullet)
+		
+		shoot_sound.play()
 		return
+		
 	player.shooting = false

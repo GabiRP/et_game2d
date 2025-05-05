@@ -283,6 +283,10 @@ max_health = 50.0
 script = ExtResource("15_ia471")
 item_pool = Array[PackedScene]([ExtResource("16_eregb"), ExtResource("17_78alm"), ExtResource("18_3ntla"), ExtResource("20_6n6ne")])
 
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+volume_db = 10.0
+pitch_scale = 0.96
+
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
 [connection signal="health_changed" from="Health" to="HealthLabel" method="_on_health_changed"]

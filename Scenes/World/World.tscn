@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cnp3vxbg2142q"]
+[gd_scene load_steps=14 format=4 uid="uid://cnp3vxbg2142q"]
 
 [ext_resource type="PackedScene" uid="uid://dbcroju10xnqn" path="res://Scenes/Player/player.tscn" id="1_0nbjp"]
 [ext_resource type="TileSet" uid="uid://b68fik5rc7y86" path="res://Assets/Tiles/WorldBackgroundTileSet.tres" id="1_27jhl"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="8_kjd5s"]
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="8_kuxid"]
 [ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="9_ng1ea"]
-[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="11_ng1ea"]
+[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="12_0d0er"]
+[ext_resource type="AudioStream" uid="uid://6w373vpvqmf1" path="res://Música/Jueguito.ogg" id="13_x5sp8"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hveh7")
@@ -48,6 +49,7 @@ autostart = true
 
 [node name="BulletUpgrade2" parent="." instance=ExtResource("8_kuxid")]
 position = Vector2(-519, -647)
+needs_update = false
 
 [node name="FasterShootingUpgrade2" parent="." instance=ExtResource("9_ng1ea")]
 position = Vector2(2323, 32)
@@ -55,6 +57,7 @@ needs_update = false
 
 [node name="BulletUpgrade3" parent="." instance=ExtResource("8_kuxid")]
 position = Vector2(-1552, -1402)
+needs_update = false
 
 [node name="FasterShootingUpgrade3" parent="." instance=ExtResource("9_ng1ea")]
 position = Vector2(-415, -1390)
@@ -67,3 +70,41 @@ needs_update = false
 [node name="MovementSpeed3" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(-1417, 166)
 needs_update = false
+
+[node name="GetHealthUpgrade" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-1610, -1372)
+
+[node name="GetHealthUpgrade2" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-1568, -1371)
+
+[node name="GetHealthUpgrade4" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-1655, -1372)
+
+[node name="GetHealthUpgrade3" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-497, -1370)
+
+[node name="GetHealthUpgrade5" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-434, -1370)
+
+[node name="GetHealthUpgrade6" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-367, -1368)
+
+[node name="GetHealthUpgrade7" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-568, -1370)
+
+[node name="GetHealthUpgrade8" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(-291, -1366)
+
+[node name="GetHealthUpgrade9" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(1348, -1373)
+
+[node name="GetHealthUpgrade10" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(1286, -1373)
+
+[node name="GetHealthUpgrade11" parent="." instance=ExtResource("12_0d0er")]
+position = Vector2(1413, -1373)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_x5sp8")
+volume_db = -24.18
+autoplay = true

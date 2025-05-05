@@ -10,6 +10,9 @@ signal upgrades_updated
 @onready var hitbox: Hitbox = $Hitbox
 @onready var attack: PlayerAttack = $PlayerAttack
 @onready var health: PlayerHealth = $Health
+@onready var jump_sound: AudioStreamPlayer = $saltar
+@onready var item_sound: AudioStreamPlayer = $Item
+
 var alive: bool = true
 var running: bool = false
 var invincible: bool = false
@@ -33,6 +36,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		if jump_sound != null:
+			jump_sound.play()
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.

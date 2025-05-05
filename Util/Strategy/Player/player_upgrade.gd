@@ -18,7 +18,6 @@ class_name PlayerUpgrade extends Area2D
 # Used when editing to denote that the sprite has changed and needs updating
 @export var needs_update := false
 
-
 func _ready() -> void:
 	body_entered.connect(on_body_entered)
 	sprite.texture = bullet_strategy.texture
@@ -46,5 +45,5 @@ func on_body_entered(body: PhysicsBody2D):
 		var add_to_list: bool = bullet_strategy.apply_upgrade(body)
 		if add_to_list:
 			body.add_player_upgrade(bullet_strategy)
-		
+		body.item_sound.play()
 		queue_free()
