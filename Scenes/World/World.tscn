@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://egcg0wx40wmd" path="res://Scenes/Player/Upgrades/MovementSpeed/movement_speed.tscn" id="8_kjd5s"]
 [ext_resource type="PackedScene" uid="uid://bixm5c031ik6c" path="res://Scenes/Player/Upgrades/MoreDamage/MoreDamage.tscn" id="8_kuxid"]
 [ext_resource type="PackedScene" uid="uid://b6iffklx5lsst" path="res://Scenes/Player/Upgrades/FasterShooting/faster_shooting_upgrade.tscn" id="9_ng1ea"]
+[ext_resource type="PackedScene" uid="uid://cldef86ynji08" path="res://Scenes/Player/Upgrades/Health/get_health_upgrade.tscn" id="11_ng1ea"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_hveh7")
@@ -66,6 +67,3 @@ needs_update = false
 [node name="MovementSpeed3" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(-1417, 166)
 needs_update = false
-
-[node name="BulletUpgrade4" parent="." instance=ExtResource("8_kuxid")]
-position = Vector2(-762, 317)

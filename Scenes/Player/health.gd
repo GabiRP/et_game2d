@@ -1,7 +1,6 @@
 class_name PlayerHealth
 extends Health
 
-
 @export var invincibility_time := 1.5
 @export var collision_shape : CollisionShape2D
 

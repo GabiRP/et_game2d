@@ -42,7 +42,9 @@ func on_body_entered(body: PhysicsBody2D):
 		# This adds the upgrade to our player,
 		# which the player uses when firing.
 		######################################
-		body.add_player_upgrade(bullet_strategy)
-		bullet_strategy.apply_upgrade(body)
+		
+		var add_to_list: bool = bullet_strategy.apply_upgrade(body)
+		if add_to_list:
+			body.add_player_upgrade(bullet_strategy)
 		
 		queue_free()
