@@ -75,22 +75,6 @@ tracks/0/keys = {
 "values": [Vector2i(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_r1w2j"]
-resource_name = "white"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_2chwy"]
 resource_name = "walk_left"
 length = 0.2
@@ -123,6 +107,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2i(3, 0), Vector2i(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r1w2j"]
+resource_name = "white"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_beese"]
@@ -281,7 +281,7 @@ max_health = 80.0
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_u4wq1")
-item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce")])
+item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce"), null])
 
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
