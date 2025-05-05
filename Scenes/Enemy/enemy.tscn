@@ -281,7 +281,7 @@ max_health = 80.0
 
 [node name="ItemDropper" type="Node" parent="."]
 script = ExtResource("15_u4wq1")
-item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce")])
+item_pool = Array[PackedScene]([ExtResource("16_d2jnu"), ExtResource("17_x4yp7"), ExtResource("16_5luce"), null])
 
 [connection signal="damaged" from="Hitbox" to="Health" method="on_damaged"]
 [connection signal="died" from="Health" to="ItemDropper" method="_on_health_died"]
