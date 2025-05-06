@@ -49,8 +49,6 @@ func _on_rmt_timeout() -> void:
 	var random_vector: Vector2 = Vector2(randf_range(-wander_radius, wander_radius),\
 	 randf_range(-wander_radius, wander_radius))
 	var random_pos: Vector2 =  state_machine.enemy.global_position + random_vector
-	print(random_pos)
-	print(random_vector)
 	var tilemap_layer: TileMapLayer = get_node("/root/World/Foreground")
 	var navmap: RID = tilemap_layer.get_navigation_map()
 	var navmesh_random_pos: Vector2 = NavigationServer2D.map_get_closest_point(navmap, random_pos)
