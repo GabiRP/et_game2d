@@ -8,5 +8,5 @@ func apply_upgrade(player: Player) -> bool:
 	if !player.health:
 		print("no player health")
 		return false
-	player.health.health += 10
+	player.health.health += 20
 	return false

@@ -41,7 +41,10 @@ tile_set = ExtResource("1_ouhkt")
 
 [node name="EnemySpawn" type="Node" parent="."]
 script = ExtResource("7_87yka")
+max_spawn_count = 12
+diff_time = 40.0
 spawn_pool = Array[PackedScene]([ExtResource("7_kjd5s"), ExtResource("7_kuxid")])
+added_health = 5
 
 [node name="Timer" type="Timer" parent="EnemySpawn"]
 one_shot = true
@@ -65,44 +68,53 @@ needs_update = false
 
 [node name="MovementSpeed2" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(1392, -1390)
-needs_update = false
 
 [node name="MovementSpeed3" parent="." instance=ExtResource("8_kjd5s")]
 position = Vector2(-1417, 166)
-needs_update = false
 
 [node name="GetHealthUpgrade" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-1610, -1372)
+needs_update = false
 
 [node name="GetHealthUpgrade2" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-1568, -1371)
+needs_update = false
 
 [node name="GetHealthUpgrade4" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-1655, -1372)
+needs_update = false
 
 [node name="GetHealthUpgrade3" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-497, -1370)
+needs_update = false
 
 [node name="GetHealthUpgrade5" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-434, -1370)
+needs_update = false
 
 [node name="GetHealthUpgrade6" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-367, -1368)
+needs_update = false
 
 [node name="GetHealthUpgrade7" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-568, -1370)
+needs_update = false
 
 [node name="GetHealthUpgrade8" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(-291, -1366)
+needs_update = false
 
 [node name="GetHealthUpgrade9" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(1348, -1373)
+needs_update = false
 
 [node name="GetHealthUpgrade10" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(1286, -1373)
+needs_update = false
 
 [node name="GetHealthUpgrade11" parent="." instance=ExtResource("12_0d0er")]
 position = Vector2(1413, -1373)
+needs_update = false
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_x5sp8")

@@ -22,8 +22,7 @@ func _on_spawn_timer_timeout() -> void:
 	
 	var diff: float = floor(time / diff_time)
 	var health_to_add: int = diff * added_health
-	print(diff)
-	print(health_to_add)
+	
 	for i in range(0, enemy_count):
 		var random_int: int = randi_range(0, len(spawn_pool) -1)
 		var enemy_scene = spawn_pool[random_int]

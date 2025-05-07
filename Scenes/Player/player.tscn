@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dbcroju10xnqn"]
+[gd_scene load_steps=28 format=3 uid="uid://dbcroju10xnqn"]
 
 [ext_resource type="Script" uid="uid://bptm8857d86v3" path="res://Scenes/Player/player.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cqkp57lwdgofi" path="res://Scenes/Player/Sprites/Sprite-player_mas_reparado.png" id="2_0u5uq"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" uid="uid://3mc5erv80a20" path="res://Scenes/Player/player_health_bar.gd" id="10_74mp2"]
 [ext_resource type="Script" uid="uid://h8naog2oduo5" path="res://Scenes/Player/upgrades_label.gd" id="11_74mp2"]
 [ext_resource type="Script" uid="uid://txlt8m78wl3f" path="res://Scenes/Player/game_over.gd" id="12_oikmp"]
+[ext_resource type="AudioStream" uid="uid://chryssnlqfmnv" path="res://Sonidos/sonido disparo.mp3" id="13_7g0yx"]
 [ext_resource type="AudioStream" uid="uid://7yuhusl2wjs1" path="res://Sonidos/salto (mp3cut.net).mp3" id="15_dey5f"]
+[ext_resource type="AudioStream" uid="uid://c24cd2pavq25f" path="res://Sonidos/item!.mp3" id="15_r5xpd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xf6vi"]
 size = Vector2(15.5, 28.5)
@@ -112,9 +114,9 @@ _data = {
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_htcer"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dd0ac"]
-graph_offset = Vector2(-131.636, -3.54546)
+graph_offset = Vector2(-61.0909, -6.27273)
 nodes/AnimationNodeStateMachine/node = ExtResource("4_mtuoh")
-nodes/AnimationNodeStateMachine/position = Vector2(-40, 100)
+nodes/AnimationNodeStateMachine/position = Vector2(0, 60)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_htcer")
 nodes/TimeScale/position = Vector2(300, 80)
 nodes/output/position = Vector2(460, 100)
@@ -289,7 +291,7 @@ focus_mode = 0
 text = "QUIT"
 
 [node name="disparar" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_dey5f")
+stream = ExtResource("13_7g0yx")
 volume_db = -10.306
 pitch_scale = 1.7
 
@@ -298,7 +300,7 @@ stream = ExtResource("15_dey5f")
 volume_db = -11.244
 
 [node name="Item" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("15_dey5f")
+stream = ExtResource("15_r5xpd")
 volume_db = -9.369
 
 [connection signal="upgrades_updated" from="." to="CanvasLayer/Control/UpgradesLabel" method="_on_player_upgrades_updated"]

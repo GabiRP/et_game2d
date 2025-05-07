@@ -22,7 +22,6 @@ script = ExtResource("1_5hk8c")
 upgrade_label = NodePath("Label")
 sprite = NodePath("Sprite2D")
 bullet_strategy = SubResource("Resource_qxeyc")
-needs_update = true
 metadata/_custom_type_script = "uid://cvdqw6bdflstx"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

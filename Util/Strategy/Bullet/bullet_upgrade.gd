@@ -43,5 +43,5 @@ func on_body_entered(body: PhysicsBody2D):
 		# which the player uses when firing.
 		######################################
 		body.add_bullet_upgrade(bullet_strategy)
-		
+		body.item_sound.play()
 		queue_free()
